@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E758A9194C31410781C3E93 /* Pods_MeteoriteRecordAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */; };
+		3986EF95240813D300075516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EF94240813D300075516 /* AppDelegate.swift */; };
+		3986EF97240813D300075516 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EF96240813D300075516 /* SceneDelegate.swift */; };
+		3986EF99240813D300075516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EF98240813D300075516 /* ViewController.swift */; };
+		3986EF9C240813D300075516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9A240813D300075516 /* Main.storyboard */; };
+		3986EF9E240813D600075516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9D240813D600075516 /* Assets.xcassets */; };
+		3986EFA1240813D600075516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9F240813D600075516 /* LaunchScreen.storyboard */; };
+		3986EFAC240813D600075516 /* MeteoriteRecordAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */; };
+		F296B275FE2E89111ABB3C3F /* Pods_MeteoriteRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3986EFA8240813D600075516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3986EF89240813D300075516 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3986EF90240813D300075516;
+			remoteInfo = MeteoriteRecordApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		14ADC6AFD7E0D1ACF33B2E7B /* Pods-MeteoriteRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordApp.release.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp.release.xcconfig"; sourceTree = "<group>"; };
+		16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3986EF91240813D300075516 /* MeteoriteRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeteoriteRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3986EF94240813D300075516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3986EF96240813D300075516 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3986EF98240813D300075516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3986EF9B240813D300075516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3986EF9D240813D600075516 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3986EFA0240813D600075516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3986EFA2240813D600075516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3986EFA7240813D600075516 /* MeteoriteRecordAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoriteRecordAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteRecordAppTests.swift; sourceTree = "<group>"; };
+		3986EFAD240813D600075516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97B4B0BDB8D055692C562774 /* Pods-MeteoriteRecordAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.release.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC481C350149D8A846D71DAB /* Pods-MeteoriteRecordAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7CBEA6AD3EF64816966CA9 /* Pods-MeteoriteRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3986EF8E240813D300075516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F296B275FE2E89111ABB3C3F /* Pods_MeteoriteRecordApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3986EFA4240813D600075516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E758A9194C31410781C3E93 /* Pods_MeteoriteRecordAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3986EF88240813D300075516 = {
+			isa = PBXGroup;
+			children = (
+				3986EF93240813D300075516 /* MeteoriteRecordApp */,
+				3986EFAA240813D600075516 /* MeteoriteRecordAppTests */,
+				3986EF92240813D300075516 /* Products */,
+				DA8A8FF6A39F6832167056E6 /* Pods */,
+				561DE4EB8CB8A71BD0BFF27B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3986EF92240813D300075516 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3986EF91240813D300075516 /* MeteoriteRecordApp.app */,
+				3986EFA7240813D600075516 /* MeteoriteRecordAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3986EF93240813D300075516 /* MeteoriteRecordApp */ = {
+			isa = PBXGroup;
+			children = (
+				3986EF94240813D300075516 /* AppDelegate.swift */,
+				3986EF96240813D300075516 /* SceneDelegate.swift */,
+				3986EF98240813D300075516 /* ViewController.swift */,
+				3986EF9A240813D300075516 /* Main.storyboard */,
+				3986EF9D240813D600075516 /* Assets.xcassets */,
+				3986EF9F240813D600075516 /* LaunchScreen.storyboard */,
+				3986EFA2240813D600075516 /* Info.plist */,
+			);
+			path = MeteoriteRecordApp;
+			sourceTree = "<group>";
+		};
+		3986EFAA240813D600075516 /* MeteoriteRecordAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */,
+				3986EFAD240813D600075516 /* Info.plist */,
+			);
+			path = MeteoriteRecordAppTests;
+			sourceTree = "<group>";
+		};
+		561DE4EB8CB8A71BD0BFF27B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */,
+				16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA8A8FF6A39F6832167056E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE7CBEA6AD3EF64816966CA9 /* Pods-MeteoriteRecordApp.debug.xcconfig */,
+				14ADC6AFD7E0D1ACF33B2E7B /* Pods-MeteoriteRecordApp.release.xcconfig */,
+				AC481C350149D8A846D71DAB /* Pods-MeteoriteRecordAppTests.debug.xcconfig */,
+				97B4B0BDB8D055692C562774 /* Pods-MeteoriteRecordAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3986EF90240813D300075516 /* MeteoriteRecordApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3986EFB0240813D600075516 /* Build configuration list for PBXNativeTarget "MeteoriteRecordApp" */;
+			buildPhases = (
+				16ED885F4F6D04D1AE25BB19 /* [CP] Check Pods Manifest.lock */,
+				3986EF8D240813D300075516 /* Sources */,
+				3986EF8E240813D300075516 /* Frameworks */,
+				3986EF8F240813D300075516 /* Resources */,
+				5666431D7DCCF78095780445 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeteoriteRecordApp;
+			productName = MeteoriteRecordApp;
+			productReference = 3986EF91240813D300075516 /* MeteoriteRecordApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3986EFA6240813D600075516 /* MeteoriteRecordAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3986EFB3240813D600075516 /* Build configuration list for PBXNativeTarget "MeteoriteRecordAppTests" */;
+			buildPhases = (
+				B56E5C316F3F31F3C19FE2EA /* [CP] Check Pods Manifest.lock */,
+				3986EFA3240813D600075516 /* Sources */,
+				3986EFA4240813D600075516 /* Frameworks */,
+				3986EFA5240813D600075516 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3986EFA9240813D600075516 /* PBXTargetDependency */,
+			);
+			name = MeteoriteRecordAppTests;
+			productName = MeteoriteRecordAppTests;
+			productReference = 3986EFA7240813D600075516 /* MeteoriteRecordAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3986EF89240813D300075516 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Lee;
+				TargetAttributes = {
+					3986EF90240813D300075516 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					3986EFA6240813D600075516 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 3986EF90240813D300075516;
+					};
+				};
+			};
+			buildConfigurationList = 3986EF8C240813D300075516 /* Build configuration list for PBXProject "MeteoriteRecordApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3986EF88240813D300075516;
+			productRefGroup = 3986EF92240813D300075516 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3986EF90240813D300075516 /* MeteoriteRecordApp */,
+				3986EFA6240813D600075516 /* MeteoriteRecordAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3986EF8F240813D300075516 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3986EFA1240813D600075516 /* LaunchScreen.storyboard in Resources */,
+				3986EF9E240813D600075516 /* Assets.xcassets in Resources */,
+				3986EF9C240813D300075516 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3986EFA5240813D600075516 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16ED885F4F6D04D1AE25BB19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeteoriteRecordApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5666431D7DCCF78095780445 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B56E5C316F3F31F3C19FE2EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeteoriteRecordAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3986EF8D240813D300075516 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3986EF99240813D300075516 /* ViewController.swift in Sources */,
+				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
+				3986EF97240813D300075516 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3986EFA3240813D600075516 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3986EFAC240813D600075516 /* MeteoriteRecordAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3986EFA9240813D600075516 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3986EF90240813D300075516 /* MeteoriteRecordApp */;
+			targetProxy = 3986EFA8240813D600075516 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3986EF9A240813D300075516 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3986EF9B240813D300075516 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3986EF9F240813D600075516 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3986EFA0240813D600075516 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3986EFAE240813D600075516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3986EFAF240813D600075516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3986EFB1240813D600075516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE7CBEA6AD3EF64816966CA9 /* Pods-MeteoriteRecordApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2QPYZY5Q25;
+				INFOPLIST_FILE = MeteoriteRecordApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.MeteoriteRecordApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3986EFB2240813D600075516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14ADC6AFD7E0D1ACF33B2E7B /* Pods-MeteoriteRecordApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2QPYZY5Q25;
+				INFOPLIST_FILE = MeteoriteRecordApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.MeteoriteRecordApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3986EFB4240813D600075516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC481C350149D8A846D71DAB /* Pods-MeteoriteRecordAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2QPYZY5Q25;
+				INFOPLIST_FILE = MeteoriteRecordAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.MeteoriteRecordAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeteoriteRecordApp.app/MeteoriteRecordApp";
+			};
+			name = Debug;
+		};
+		3986EFB5240813D600075516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97B4B0BDB8D055692C562774 /* Pods-MeteoriteRecordAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2QPYZY5Q25;
+				INFOPLIST_FILE = MeteoriteRecordAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.MeteoriteRecordAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeteoriteRecordApp.app/MeteoriteRecordApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3986EF8C240813D300075516 /* Build configuration list for PBXProject "MeteoriteRecordApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3986EFAE240813D600075516 /* Debug */,
+				3986EFAF240813D600075516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3986EFB0240813D600075516 /* Build configuration list for PBXNativeTarget "MeteoriteRecordApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3986EFB1240813D600075516 /* Debug */,
+				3986EFB2240813D600075516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3986EFB3240813D600075516 /* Build configuration list for PBXNativeTarget "MeteoriteRecordAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3986EFB4240813D600075516 /* Debug */,
+				3986EFB5240813D600075516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3986EF89240813D300075516 /* Project object */;
+}

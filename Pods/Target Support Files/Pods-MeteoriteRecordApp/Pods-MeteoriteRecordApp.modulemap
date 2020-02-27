@@ -1,0 +1,6 @@
+framework module Pods_MeteoriteRecordApp {
+  umbrella header "Pods-MeteoriteRecordApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
