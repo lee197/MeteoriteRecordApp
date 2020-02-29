@@ -64,10 +64,6 @@ class MeteoriteListViewController: UIViewController {
         alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
 extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource{
@@ -92,7 +88,6 @@ extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        
         self.meteoriteVM.userPressed(at: indexPath)
         if meteoriteVM.isSegueAllowed {
             return indexPath

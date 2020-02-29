@@ -33,7 +33,7 @@ class APIServiceTest: XCTestCase {
 
         sut.fetchMeteoriteInfo(complete: { (success, meteorites, error) in
             expect.fulfill()
-            XCTAssertEqual(meteorites.count, 10)
+            XCTAssertEqual(meteorites.count, 1000)
             for meteorite in meteorites {
                 XCTAssertNotNil(meteorite.id)
             }

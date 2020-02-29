@@ -24,15 +24,18 @@ class MeteoriteRecordAppTests: XCTestCase {
         mockAPIService = nil
         super.tearDown()
     }
+    
     func testFetchMeteorite() {
         // Given
         mockAPIService.completeMeteorites = [Meteorite]()
 
         // When
         sut.initFetch()
+        
         // Assert
-        XCTAssert(mockAPIService!.isFetchMeteoriteCalled)
+        XCTAssert(mockAPIService.isFetchMeteoriteCalled)
     }
+    
     func testFetchMeteoriteFail() {
         
         // Given a failed fetch with a certain failure
@@ -40,7 +43,6 @@ class MeteoriteRecordAppTests: XCTestCase {
         
         // When
         sut.initFetch()
-        
         mockAPIService.fetchFail(error: error)
         
         // Sut should display predefined error message
@@ -68,7 +70,6 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testLoadingWhileFetching() {
-        
         //Given
         var loadingStatus = false
         let expect = XCTestExpectation(description: "Loading status updated")
@@ -134,7 +135,7 @@ class MeteoriteRecordAppTests: XCTestCase {
         
         let indexPath = IndexPath(row: 1, section: 0)
         
-        let testMeteorite = sut.sortMeteorites(meteorites: mockAPIService.completeMeteorites)[indexPath.row]
+        let testMeteorite = mockAPIService.completeMeteorites[indexPath.row]
 
         // When
         let vm = sut.getCellViewModel(at: indexPath)
@@ -223,7 +224,6 @@ class MockApiService: APIServiceProtocol {
     func fetchFail(error: APIError?) {
         completeClosure(false, completeMeteorites, error)
     }
-    
 }
 
 class DataGenerator {

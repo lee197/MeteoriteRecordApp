@@ -8,15 +8,32 @@
 
 import Foundation
 
+enum APINULL: String {
+    case noSize = "-1"
+    case noYear = "NoYear"
+}
+
+protocol Meteorite{
+    var mName: String{ get }
+    var mSize: String{ get }
+    var mDate: String{ get }
+    var mLocation: Geolocation{ get }
+}
 // MARK: - MeteoriteElement
-struct Meteorite: Codable {
+struct APIMeteorite: Codable {
     let name, id, nametype, recclass: String
-    var mass: String?
+    let mass: String?
     let fall: String
-    var year:String?
-    var date:String{year?.components(separatedBy: "T")[0] ?? ""}
+    let year: String?
     let reclat, reclong: String?
     let geolocation: Geolocation?
+}
+
+extension APIMeteorite: Meteorite{
+    var mName: String{ name }
+    var mSize: String{ mass ?? APINULL.noSize.rawValue }
+    var mDate: String{ year?.components(separatedBy: "T")[0] ?? APINULL.noYear.rawValue }
+    var mLocation: Geolocation{ geolocation ?? Geolocation(type: "Point", coordinates: []) }
 }
 
 // MARK: - Geolocation

@@ -25,16 +25,16 @@ class MeteoriteDetailViewController:UIViewController{
     }
     
     func showMeteoriteInfo(){
-        mNameLabel.text = meteoriteDetailVM.getMeteorite().name
-        mSizeLabel.text = meteoriteDetailVM.getMeteorite().mass
-        mDateLabel.text = meteoriteDetailVM.getMeteorite().date
-        latitudeLabel.text = String(meteoriteDetailVM.getMeteorite().geolocation!.coordinates[0])
-        longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().geolocation!.coordinates[1])
+        mNameLabel.text = meteoriteDetailVM.getMeteorite().mName
+        mSizeLabel.text = meteoriteDetailVM.getMeteorite().mSize
+        mDateLabel.text = meteoriteDetailVM.getMeteorite().mDate
+        latitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[0])
+        longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[1])
     }
     
     func showOnMap(){
-        let location = CLLocationCoordinate2D(latitude: meteoriteDetailVM.getMeteorite().geolocation!.coordinates[1],
-            longitude: meteoriteDetailVM.getMeteorite().geolocation!.coordinates[0])
+        let location = CLLocationCoordinate2D(latitude: meteoriteDetailVM.getMeteorite().mLocation.coordinates[1],
+            longitude: meteoriteDetailVM.getMeteorite().mLocation.coordinates[0])
         
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
@@ -42,8 +42,8 @@ class MeteoriteDetailViewController:UIViewController{
             
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = meteoriteDetailVM.getMeteorite().name
-        annotation.subtitle = meteoriteDetailVM.getMeteorite().date
+        annotation.title = meteoriteDetailVM.getMeteorite().mName
+        annotation.subtitle = meteoriteDetailVM.getMeteorite().mDate
         mapView.addAnnotation(annotation)
     }
     

@@ -42,28 +42,23 @@ class MeteoriteViewModel{
     func initFetch() {
         self.isLoading = true
         apiService.fetchMeteoriteInfo {[weak self](success, meteorites, error) in
-            guard let strongSelf = self else{ return }
-            strongSelf.isLoading = false
+            self?.isLoading = false
             if let error = error {
-              strongSelf.alertMessage = error.rawValue
+              self?.alertMessage = error.rawValue
             } else {
-              strongSelf.processFetchedMeteorite(meteorites: meteorites)
+              self?.processMeteoriteToCellModel(meteorites: meteorites)
             }
         }
     }
     
-    private func processFetchedMeteorite(meteorites: [Meteorite]) {
+    private func processMeteoriteToCellModel(meteorites: [Meteorite]) {
            //TODO
-           self.meteoriteList = sortMeteorites(meteorites:meteorites)
-           var vms = [MeteoriteListCellViewModel]()
+           self.meteoriteList = meteorites.sorted(by: { Double($0.mSize)! > Double($1.mSize)! })
+           var cellVMs = [MeteoriteListCellViewModel]()
            for meteorite in self.meteoriteList {
-               vms.append(createCellViewModel(meteorite: meteorite))
+               cellVMs.append(createCellViewModel(meteorite: meteorite))
            }
-           self.cellViewModels = vms
-    }
-    //TODO
-    func sortMeteorites(meteorites: [Meteorite]) -> [Meteorite]{
-         return meteorites.sorted(by: { Double($0.mass!)! > Double($1.mass!)! })
+           self.cellViewModels = cellVMs
     }
     
     func getCellViewModel( at indexPath: IndexPath ) -> MeteoriteListCellViewModel {
@@ -74,24 +69,23 @@ class MeteoriteViewModel{
          var meteoriteMass = "UNKNOWN"
          var meteoriteDate = "UNKNOWN"
          
-         if let mass = meteorite.mass {
-            meteoriteMass = mass
+         if meteorite.mSize != APINULL.noSize.rawValue {
+            meteoriteMass = meteorite.mSize
          }
-        
-         if let _ = meteorite.year {
-            meteoriteDate = meteorite.date
-          }
+         if meteorite.mDate != APINULL.noYear.rawValue {
+            meteoriteDate = meteorite.mDate
+         }
 
-          return MeteoriteListCellViewModel( titleText: meteorite.name,
+        return MeteoriteListCellViewModel( titleText: meteorite.mName,
                                              sizeText: meteoriteMass,
-                                             dateText: meteoriteDate)
+                                             dateText: meteoriteDate )
     }
 }
 
 extension MeteoriteViewModel{
     func userPressed( at indexPath: IndexPath ){
         let meteorite = self.meteoriteList[indexPath.row]
-        if let _ = meteorite.geolocation {
+        if !meteorite.mLocation.coordinates.isEmpty{
             self.isSegueAllowed = true
             self.selectedMeteorite = meteorite
         }else{
