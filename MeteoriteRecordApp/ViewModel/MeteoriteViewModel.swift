@@ -34,7 +34,8 @@ class MeteoriteViewModel{
     var reloadTableViewClosure: (()->())?
     var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
-
+    let sizeAbsence = Double(APINULL.noSize.rawValue)
+    
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
     }
@@ -52,8 +53,8 @@ class MeteoriteViewModel{
     }
     
     private func processMeteoriteToCellModel(meteorites: [Meteorite]) {
-           //TODO
-           self.meteoriteList = meteorites.sorted(by: { Double($0.mSize)! > Double($1.mSize)! })
+           
+           self.meteoriteList = meteorites.sorted(by: { $0.mSize > $1.mSize })
            var cellVMs = [MeteoriteListCellViewModel]()
            for meteorite in self.meteoriteList {
                cellVMs.append(createCellViewModel(meteorite: meteorite))
@@ -68,15 +69,15 @@ class MeteoriteViewModel{
     func createCellViewModel(meteorite:Meteorite) -> MeteoriteListCellViewModel {
          var meteoriteMass = "UNKNOWN"
          var meteoriteDate = "UNKNOWN"
-         
-         if meteorite.mSize != APINULL.noSize.rawValue {
-            meteoriteMass = meteorite.mSize
+         //ToFix
+         if meteorite.mSize != sizeAbsence {
+            meteoriteMass = String(meteorite.mSize)
          }
          if meteorite.mDate != APINULL.noYear.rawValue {
             meteoriteDate = meteorite.mDate
          }
 
-        return MeteoriteListCellViewModel( titleText: meteorite.mName,
+        return MeteoriteListCellViewModel(  titleText: meteorite.mName,
                                              sizeText: meteoriteMass,
                                              dateText: meteoriteDate )
     }

@@ -26,7 +26,7 @@ class MeteoriteDetailViewController:UIViewController{
     
     func showMeteoriteInfo(){
         mNameLabel.text = meteoriteDetailVM.getMeteorite().mName
-        mSizeLabel.text = meteoriteDetailVM.getMeteorite().mSize
+        mSizeLabel.text = String(meteoriteDetailVM.getMeteorite().mSize)
         mDateLabel.text = meteoriteDetailVM.getMeteorite().mDate
         latitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[0])
         longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[1])

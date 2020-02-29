@@ -15,11 +15,11 @@ enum APINULL: String {
 
 protocol Meteorite{
     var mName: String{ get }
-    var mSize: String{ get }
+    var mSize: Double{ get }
     var mDate: String{ get }
     var mLocation: Geolocation{ get }
 }
-// MARK: - MeteoriteElement
+
 struct APIMeteorite: Codable {
     let name, id, nametype, recclass: String
     let mass: String?
@@ -31,12 +31,17 @@ struct APIMeteorite: Codable {
 
 extension APIMeteorite: Meteorite{
     var mName: String{ name }
-    var mSize: String{ mass ?? APINULL.noSize.rawValue }
+    var mSize: Double{
+        if let nMass = Double(mass ?? APINULL.noSize.rawValue){
+            return nMass
+        }else{
+            return Double(APINULL.noSize.rawValue)!
+        }
+    }
     var mDate: String{ year?.components(separatedBy: "T")[0] ?? APINULL.noYear.rawValue }
     var mLocation: Geolocation{ geolocation ?? Geolocation(type: "Point", coordinates: []) }
 }
 
-// MARK: - Geolocation
 struct Geolocation: Codable {
     let type: String
     let coordinates: [Double]

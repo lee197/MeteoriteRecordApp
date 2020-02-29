@@ -7,7 +7,6 @@
 "recclass": "L5",
 "mass": "21",
 "fall": "Fell",
-"year": null,
 "reclat": "50.775000",
 "reclong": "6.083330",
 "geolocation": {
@@ -23,7 +22,6 @@
 "id": "2",
 "nametype": "Valid",
 "recclass": "H6",
-"mass": "720",
 "fall": "Fell",
 "year": "1951-01-01T00:00:00.000",
 "reclat": "56.183330",
@@ -41,7 +39,7 @@
 "id": "6",
 "nametype": "Valid",
 "recclass": "EH4",
-"mass": "107000",
+"mass": "this_is_for_test",
 "fall": "Fell",
 "year": "1952-01-01T00:00:00.000",
 "reclat": "54.216670",
@@ -77,12 +75,11 @@
 "id": "370",
 "nametype": "Valid",
 "recclass": "L6",
-"mass": "780",
+"mass": "789",
 "fall": "Fell",
 "year": "1902-01-01T00:00:00.000",
 "reclat": "-33.166670",
 "reclong": "-64.950000",
-"geolocation": null
 },
 {
 "name": "Adhi Kot",
