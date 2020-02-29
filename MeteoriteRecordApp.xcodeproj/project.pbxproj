@@ -20,7 +20,6 @@
 		3986EFC724086CF000075516 /* APIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFC624086CF000075516 /* APIServiceTest.swift */; };
 		3986EFC924086D9800075516 /* ApiData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3986EFC824086D9700075516 /* ApiData.json */; };
 		3986EFCB24086E5200075516 /* MeteoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFCA24086E5200075516 /* MeteoriteViewModel.swift */; };
-		3986EFCD2408724700075516 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFCC2408724700075516 /* Displayable.swift */; };
 		3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFCE24095B3900075516 /* MeteoriteListCell.swift */; };
 		3986EFD22409655900075516 /* MeteoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFD12409655900075516 /* MeteoriteDetailViewController.swift */; };
 		3986EFD42409679300075516 /* MeteoriteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFD32409679300075516 /* MeteoriteDetailViewModel.swift */; };
@@ -56,7 +55,6 @@
 		3986EFC624086CF000075516 /* APIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTest.swift; sourceTree = "<group>"; };
 		3986EFC824086D9700075516 /* ApiData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ApiData.json; path = MeteoriteRecordApp/ApiData.json; sourceTree = SOURCE_ROOT; };
 		3986EFCA24086E5200075516 /* MeteoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteViewModel.swift; sourceTree = "<group>"; };
-		3986EFCC2408724700075516 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		3986EFCE24095B3900075516 /* MeteoriteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteListCell.swift; sourceTree = "<group>"; };
 		3986EFD12409655900075516 /* MeteoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewController.swift; sourceTree = "<group>"; };
 		3986EFD32409679300075516 /* MeteoriteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewModel.swift; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 			children = (
 				3986EFC824086D9700075516 /* ApiData.json */,
 				3986EFBF2408685B00075516 /* APIService.swift */,
-				3986EFCC2408724700075516 /* Displayable.swift */,
 			);
 			path = NetworkingService;
 			sourceTree = "<group>";
@@ -194,6 +191,7 @@
 				3986EF8E240813D300075516 /* Frameworks */,
 				3986EF8F240813D300075516 /* Resources */,
 				5666431D7DCCF78095780445 /* [CP] Embed Pods Frameworks */,
+				39860F47240A805800B09F2E /* Run Lee Script */,
 			);
 			buildRules = (
 			);
@@ -305,9 +303,27 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		39860F47240A805800B09F2E /* Run Lee Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Lee Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		5666431D7DCCF78095780445 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -354,7 +370,6 @@
 				3986EFD42409679300075516 /* MeteoriteDetailViewModel.swift in Sources */,
 				3986EF99240813D300075516 /* MeteoriteListViewController.swift in Sources */,
 				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
-				3986EFCD2408724700075516 /* Displayable.swift in Sources */,
 				3986EFC02408685B00075516 /* APIService.swift in Sources */,
 				3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */,
 				3986EFC3240869A100075516 /* Meteorite.swift in Sources */,

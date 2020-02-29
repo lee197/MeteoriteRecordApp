@@ -78,7 +78,7 @@ extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "mCell", for: indexPath) as? MeteoriteListCell else {
-            fatalError("Cell not exists in storyboard")
+            fatalError("Cell not in storyboard")
         }
         
         let cellVM = meteoriteVM.getCellViewModel(at: indexPath)

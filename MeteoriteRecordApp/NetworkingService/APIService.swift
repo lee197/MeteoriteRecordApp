@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum APIError: String, Error {
     case noNetwork = "No Network"
@@ -20,15 +21,18 @@ protocol APIServiceProtocol {
 
 struct APIService: APIServiceProtocol {
     func fetchMeteoriteInfo(complete: @escaping (Bool, [Meteorite], APIError?) -> ()) {
-         DispatchQueue.global().async {
-         sleep(3)
+         DispatchQueue.global().asyncAfter(deadline: .now() + 3) { 
          let path = Bundle.main.path(forResource: "ApiData", ofType: "json")!
-         let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+         let data = try? Data(contentsOf: URL(fileURLWithPath: path))
          let decoder = JSONDecoder()
          decoder.dateDecodingStrategy = .iso8601
-         let meteorites = try! decoder.decode([Meteorite].self, from: data)
-         complete( true, meteorites, nil )
+         let meteorites = try? decoder.decode([Meteorite].self, from: data!)
+         complete( true, meteorites!, nil )
           }
         }
+    
+    func fetchMeteoriteInfoFromAF(complete: @escaping (Bool, [Meteorite], APIError?) -> ()) {
+        
     }
+}
 

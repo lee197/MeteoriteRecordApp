@@ -23,7 +23,7 @@ class APIServiceTest: XCTestCase {
         super.tearDown()
     }
 
-    func test_fetch_popular_photos() {
+    func testFetchMeteoriteInfo() {
 
         // Given a apiservice
         let sut = self.sut!
@@ -33,7 +33,7 @@ class APIServiceTest: XCTestCase {
 
         sut.fetchMeteoriteInfo(complete: { (success, meteorites, error) in
             expect.fulfill()
-            XCTAssertEqual( meteorites.count, 10)
+            XCTAssertEqual(meteorites.count, 10)
             for meteorite in meteorites {
                 XCTAssertNotNil(meteorite.id)
             }

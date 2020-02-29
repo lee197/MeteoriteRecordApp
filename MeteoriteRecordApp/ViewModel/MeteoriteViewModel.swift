@@ -42,15 +42,12 @@ class MeteoriteViewModel{
     func initFetch() {
         self.isLoading = true
         apiService.fetchMeteoriteInfo {[weak self](success, meteorites, error) in
-            guard let weakSelf = self else{
-               return
-            }
-            
-            weakSelf.isLoading = false
+            guard let strongSelf = self else{ return }
+            strongSelf.isLoading = false
             if let error = error {
-              weakSelf.alertMessage = error.rawValue
+              strongSelf.alertMessage = error.rawValue
             } else {
-              weakSelf.processFetchedMeteorite(meteorites: meteorites)
+              strongSelf.processFetchedMeteorite(meteorites: meteorites)
             }
         }
     }
