@@ -17,14 +17,25 @@ class MeteoriteDetailViewController:UIViewController{
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    var meteoriteDetailVM: MeteoriteDetailViewModel!
+    var meteoriteDetailVM: MeteoriteDetailViewModel
     
+    init?(coder: NSCoder, meteoriteDetailVM: MeteoriteDetailViewModel) {
+          self.meteoriteDetailVM = meteoriteDetailVM
+          super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+          fatalError("You must create this view controller with a meteoriteDetailVM.")
+    }
+    
+  
     override func viewDidLoad() {
+        super.viewDidLoad()
         showOnMap()
         showMeteoriteInfo()
     }
     
-    func showMeteoriteInfo(){
+    func showMeteoriteInfo() {
         mNameLabel.text = meteoriteDetailVM.getMeteorite().mName
         mSizeLabel.text = String(meteoriteDetailVM.getMeteorite().mSize)
         mDateLabel.text = meteoriteDetailVM.getMeteorite().mDate
@@ -32,7 +43,7 @@ class MeteoriteDetailViewController:UIViewController{
         longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[1])
     }
     
-    func showOnMap(){
+    func showOnMap() {
         let location = CLLocationCoordinate2D(latitude: meteoriteDetailVM.getMeteorite().mLocation.coordinates[1],
             longitude: meteoriteDetailVM.getMeteorite().mLocation.coordinates[0])
         

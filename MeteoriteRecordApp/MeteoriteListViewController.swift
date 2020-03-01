@@ -24,9 +24,7 @@ class MeteoriteListViewController: UIViewController {
      }
      
      func initVM() {
-         
-         // Naive binding
-         meteoriteVM.showAlertClosure = { [weak self] in
+        meteoriteVM.showAlertClosure = { [weak self] in
              DispatchQueue.main.async {
                  if let message = self?.meteoriteVM.alertMessage {
                      self?.showAlert(message)
@@ -64,6 +62,16 @@ class MeteoriteListViewController: UIViewController {
         alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func showMeteoriteDetail(selectedMeteorite:Meteorite){
+       guard let vc = storyboard?.instantiateViewController(identifier: "MeteoriteDetailViewController", creator: { coder in
+        return MeteoriteDetailViewController(coder: coder, meteoriteDetailVM:  MeteoriteDetailViewModel(meteorite: selectedMeteorite))
+           }) else {
+               fatalError("Failed to load MeteoriteDetailViewController from storyboard.")
+           }
+
+           navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource{
@@ -98,14 +106,8 @@ extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-extension MeteoriteListViewController{
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let vc = segue.destination as? MeteoriteDetailViewController,
-                let selectedMeteorite = meteoriteVM.selectedMeteorite {
-                vc.meteoriteDetailVM = MeteoriteDetailViewModel(meteorite: selectedMeteorite)
-            }
+        if let selectedMeteorite = meteoriteVM.selectedMeteorite {
+            showMeteoriteDetail(selectedMeteorite: selectedMeteorite)
         }
+    }
 }
