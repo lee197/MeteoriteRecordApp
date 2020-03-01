@@ -13,6 +13,6 @@ The project is using cocoapods for managing external libraries and a Gemfile for
 
 ## Next step:
 
-*  Replce UIStoryboard with autoLayout code
+*  Replce UIStoryboard with AutoLayout code
 *  Make Generic Networking Layer
 
