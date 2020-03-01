@@ -63,7 +63,7 @@ class MeteoriteListViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showMeteoriteDetail(selectedMeteorite:Meteorite){
+    func showMeteoriteDetail(selectedMeteorite:Meteorite) {
        guard let vc = storyboard?.instantiateViewController(identifier: "MeteoriteDetailViewController", creator: { coder in
         return MeteoriteDetailViewController(coder: coder, meteoriteDetailVM:  MeteoriteDetailViewModel(meteorite: selectedMeteorite))
            }) else {

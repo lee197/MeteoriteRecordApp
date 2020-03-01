@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 
 enum APIError: String, Error {
-    case noNetwork = "No Network"
-    case serverOverload = "Server is overloaded"
-    case permissionDenied = "You don't have permission"
+    case invalidData = "invalid data"
+    case serverError = "Server error"
+    case permissionDenied = "permission "
 }
 
 protocol APIServiceProtocol {
@@ -31,13 +31,19 @@ struct APIService: APIServiceProtocol {
           }
         }
     
-//    func fetchMeteoriteInfo(complete: @escaping (Bool, [Meteorite], APIError?) -> ()) {
-//        AF.request("https://data.nasa.gov/resource/y77d-th95.json").validate().responseDecodable(of: [APIMeteorite].self) { (response) in
-//        guard let meteorites = response.value else {
-////           print(response.error?.errorDescription)
-//           return }
-//        complete( true, meteorites, nil )
-//        }
-//    }
+    func fetchMeteoriteInfo(complete: @escaping (Bool, [Meteorite]?, APIError?) -> ()) {
+        AF.request("https://data.nasa.gov/resource/y77d-th95.json").validate().responseDecodable(of: [APIMeteorite].self) { (response) in
+        guard let meteorites = response.value else {
+            if let error = response.error {
+                if error.isResponseSerializationError {
+                    complete( false, nil, APIError.invalidData)
+                }else {
+                    complete( false, nil, APIError.serverError)
+                }
+            }
+         return }
+        complete( true, meteorites, nil )
+        }
+    }
 }
 

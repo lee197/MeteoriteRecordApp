@@ -29,17 +29,17 @@ struct APIMeteorite: Codable {
     let geolocation: Geolocation?
 }
 
-extension APIMeteorite: Meteorite{
-    var mName: String{ name }
-    var mSize: Double{
-        if let nMass = Double(mass ?? APINULL.noSize.rawValue){
+extension APIMeteorite: Meteorite {
+    var mName: String { name }
+    var mSize: Double {
+        if let nMass = Double(mass ?? APINULL.noSize.rawValue) {
             return nMass
-        }else{
+        }else {
             return Double(APINULL.noSize.rawValue)!
         }
     }
-    var mDate: String{ year?.components(separatedBy: "T")[0] ?? APINULL.noYear.rawValue }
-    var mLocation: Geolocation{ geolocation ?? Geolocation(type: "Point", coordinates: []) }
+    var mDate: String { year?.components(separatedBy: "T")[0] ?? APINULL.noYear.rawValue }
+    var mLocation: Geolocation { geolocation ?? Geolocation(type: "Point", coordinates: []) }
 }
 
 struct Geolocation: Codable {

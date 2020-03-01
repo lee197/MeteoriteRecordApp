@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-class MeteoriteDetailViewController:UIViewController{
+class MeteoriteDetailViewController:UIViewController {
     
     @IBOutlet weak var mNameLabel: UILabel!
     @IBOutlet weak var mSizeLabel: UILabel!

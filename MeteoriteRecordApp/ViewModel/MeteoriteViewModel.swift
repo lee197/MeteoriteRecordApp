@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MeteoriteViewModel{
+class MeteoriteViewModel {
     let apiService: APIServiceProtocol
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
@@ -83,8 +83,8 @@ class MeteoriteViewModel{
     }
 }
 
-extension MeteoriteViewModel{
-    func userPressed( at indexPath: IndexPath ){
+extension MeteoriteViewModel {
+    func userPressed( at indexPath: IndexPath ) {
         let meteorite = self.meteoriteList[indexPath.row]
         if !meteorite.mLocation.coordinates.isEmpty{
             self.isSegueAllowed = true

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MeteoriteDetailViewModel{
+class MeteoriteDetailViewModel {
     
     private let meteorite:Meteorite
     
