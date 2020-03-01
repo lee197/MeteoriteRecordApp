@@ -109,7 +109,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     func testUserPressItemWithoutGeo() {
         
         //Given a sut with fetched meteorites
-        let indexPath = IndexPath(row: 7, section: 0)
+        let indexPath = IndexPath(row: 6, section: 0)
         goToFetchMeteoriteFinished()
         
         let expect = XCTestExpectation(description: "Alert message is shown")
@@ -129,36 +129,32 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testGetCellViewModel() {
-        
         //Given a sut with fetched meteorites
         goToFetchMeteoriteFinished()
-        
         let indexPath = IndexPath(row: 1, section: 0)
+        let testMeteorite = mockAPIService.completeMeteorites.sorted(by: { $0.mSize > $1.mSize })[indexPath.row]
         
-        let testMeteorite = mockAPIService.completeMeteorites[indexPath.row]
-
         // When
         let vm = sut.getCellViewModel(at: indexPath)
         
         //Assert
-        XCTAssertEqual(vm.titleText, testMeteorite.name)
+        XCTAssertEqual(vm.titleText, testMeteorite.mName)
     }
     
     func testCellViewModel() {
-        //Given meteorites
-        let meteorite = Meteorite.init(name: "Meteorite",
+        //Given APIMeteorite
+        let meteorite:Meteorite = APIMeteorite.init(name: "Meteorite",
                                        id: "0",
                                        nametype: "Valid",
                                        recclass: "H6",
-                                       mass: "750",
+                                       mass: "750.0",
                                        fall: "Found",
                                        year: "1934-01-01T00:00:00.000",
                                        reclat: "-30.883330",
                                        reclong: "-64.550000",
                                        geolocation: Geolocation.init(type:"Point",
                                                                      coordinates:[1.1,2.2]))
-        
-        let meteoriteWithoutMass = Meteorite.init(name: "Meteorite",
+        let meteoriteWithoutMass = APIMeteorite.init(name: "Meteorite",
                                                   id: "0",
                                                   nametype: "Valid",
                                                   recclass: "H6",
@@ -169,7 +165,7 @@ class MeteoriteRecordAppTests: XCTestCase {
                                                   reclong: "-64.550000",
                                                   geolocation: Geolocation.init(type:"Point",
                                                                                 coordinates:[1.1,2.2]))
-        let meteoriteWithoutYear = Meteorite.init(name: "Meteorite",
+        let meteoriteWithoutYear = APIMeteorite.init(name: "Meteorite",
                                                   id: "0",
                                                   nametype: "Valid",
                                                   recclass: "H6",
@@ -187,10 +183,9 @@ class MeteoriteRecordAppTests: XCTestCase {
         let cellViewModelWithoutYear = sut!.createCellViewModel(meteorite: meteoriteWithoutYear)
 
         // Assert the correctness of display information
-        XCTAssertEqual(meteorite.name, cellViewModel.titleText)
-        XCTAssertEqual(meteorite.date, cellViewModel.dateText)
-        XCTAssertEqual(meteorite.mass, cellViewModel.sizeText)
-        
+        XCTAssertEqual(meteorite.mName, cellViewModel.titleText)
+        XCTAssertEqual(meteorite.mDate, cellViewModel.dateText)
+        XCTAssertEqual(String(meteorite.mSize), cellViewModel.sizeText)
 
         XCTAssertEqual(cellViewModelWithoutMass.sizeText, "UNKNOWN")
         XCTAssertEqual(cellViewModelWithoutYear.dateText, "UNKNOWN")
@@ -228,11 +223,11 @@ class MockApiService: APIServiceProtocol {
 
 class DataGenerator {
     func createMeteorite() -> [Meteorite] {
-        let path = Bundle.main.path(forResource: "ApiData", ofType: "json")!
+        let path = Bundle.main.path(forResource: "ApiTestData", ofType: "json")!
         let data = try? Data(contentsOf: URL(fileURLWithPath: path))
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let meteorites = try? decoder.decode([Meteorite].self, from: data!)
+        let meteorites = try? decoder.decode([APIMeteorite].self, from: data!)
         return meteorites!
     }
 }

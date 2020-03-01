@@ -22,7 +22,7 @@ protocol APIServiceProtocol {
 struct APIService: APIServiceProtocol {
     func fetchMeteoriteInfo(complete: @escaping (Bool, [Meteorite], APIError?) -> ()) {
          DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
-         let path = Bundle.main.path(forResource: "ApiData", ofType: "json")!
+         let path = Bundle.main.path(forResource: "ApiTestData", ofType: "json")!
          let data = try? Data(contentsOf: URL(fileURLWithPath: path))
          let decoder = JSONDecoder()
          decoder.dateDecodingStrategy = .iso8601
