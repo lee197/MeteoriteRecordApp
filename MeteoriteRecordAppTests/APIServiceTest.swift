@@ -10,27 +10,27 @@ import XCTest
 @testable import MeteoriteRecordApp
 
 class APIServiceTest: XCTestCase {
-
+    
     var sut: APIService?
     
     override func setUp() {
         super.setUp()
         sut = APIService()
     }
-
+    
     override func tearDown() {
         sut = nil
         super.tearDown()
     }
-
+    
     func testFetchMeteoriteInfo() {
-
+        
         // Given a apiservice
         let sut = self.sut!
-
+        
         // When fetch info
         let expect = XCTestExpectation(description: "callback")
-
+        
         sut.fetchMeteoriteInfo(complete: { (success, meteorites, error) in
             expect.fulfill()
             XCTAssertEqual(meteorites.count, 1000)
@@ -38,7 +38,7 @@ class APIServiceTest: XCTestCase {
                 XCTAssertNotNil(meteorite.mName)
             }
         })
-
+        
         wait(for: [expect], timeout: 3.1)
     }
     

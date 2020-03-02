@@ -12,19 +12,19 @@ class MeteoriteViewModel {
     let apiService: APIServiceProtocol
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
-          didSet {
-              self.reloadTableViewClosure?()
-          }
-      }
+        didSet {
+            self.reloadTableViewClosure?()
+        }
+    }
     var isLoading: Bool = false {
-          didSet {
-              self.updateLoadingStatus?()
-          }
+        didSet {
+            self.updateLoadingStatus?()
+        }
     }
     var alertMessage: String? {
-          didSet {
-              self.showAlertClosure?()
-          }
+        didSet {
+            self.showAlertClosure?()
+        }
     }
     var numberOfCells: Int {
         return cellViewModels.count
@@ -45,21 +45,21 @@ class MeteoriteViewModel {
         apiService.fetchMeteoriteInfo {[weak self](success, meteorites, error) in
             self?.isLoading = false
             if let error = error {
-              self?.alertMessage = error.rawValue
+                self?.alertMessage = error.rawValue
             } else {
-              self?.processMeteoriteToCellModel(meteorites: meteorites)
+                self?.processMeteoriteToCellModel(meteorites: meteorites)
             }
         }
     }
     
     private func processMeteoriteToCellModel(meteorites: [Meteorite]) {
-           
-           self.meteoriteList = meteorites.sorted(by: { $0.mSize > $1.mSize })
-           var cellVMs = [MeteoriteListCellViewModel]()
-           for meteorite in self.meteoriteList {
-               cellVMs.append(createCellViewModel(meteorite: meteorite))
-           }
-           self.cellViewModels = cellVMs
+        
+        self.meteoriteList = meteorites.sorted(by: { $0.mSize > $1.mSize })
+        var cellVMs = [MeteoriteListCellViewModel]()
+        for meteorite in self.meteoriteList {
+            cellVMs.append(createCellViewModel(meteorite: meteorite))
+        }
+        self.cellViewModels = cellVMs
     }
     
     func getCellViewModel( at indexPath: IndexPath ) -> MeteoriteListCellViewModel {
@@ -67,19 +67,19 @@ class MeteoriteViewModel {
     }
     
     func createCellViewModel(meteorite:Meteorite) -> MeteoriteListCellViewModel {
-         var meteoriteMass = "UNKNOWN"
-         var meteoriteDate = "UNKNOWN"
-         //ToFix
-         if meteorite.mSize != sizeAbsence {
+        var meteoriteMass = "UNKNOWN"
+        var meteoriteDate = "UNKNOWN"
+        //ToFix
+        if meteorite.mSize != sizeAbsence {
             meteoriteMass = String(meteorite.mSize)
-         }
-         if meteorite.mDate != APINULL.noYear.rawValue {
+        }
+        if meteorite.mDate != APINULL.noYear.rawValue {
             meteoriteDate = meteorite.mDate
-         }
-
+        }
+        
         return MeteoriteListCellViewModel(  titleText: meteorite.mName,
-                                             sizeText: meteoriteMass,
-                                             dateText: meteoriteDate )
+                                            sizeText: meteoriteMass,
+                                            dateText: meteoriteDate )
     }
 }
 
