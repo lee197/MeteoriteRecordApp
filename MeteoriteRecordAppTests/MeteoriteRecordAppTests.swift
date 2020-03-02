@@ -12,7 +12,7 @@ import XCTest
 class MeteoriteRecordAppTests: XCTestCase {
     var sut: MeteoriteViewModel!
     var mockAPIService: MockApiService!
-
+    
     override func setUp() {
         super.setUp()
         mockAPIService = MockApiService()
@@ -28,7 +28,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     func testFetchMeteorite() {
         // Given
         mockAPIService.completeMeteorites = [Meteorite]()
-
+        
         // When
         sut.initFetch()
         
@@ -96,7 +96,7 @@ class MeteoriteRecordAppTests: XCTestCase {
         //Given a sut with fetched meteorites
         let indexPath = IndexPath(row: 0, section: 0)
         goToFetchMeteoriteFinished()
-
+        
         //When
         sut.userPressed(at: indexPath)
         
@@ -144,49 +144,49 @@ class MeteoriteRecordAppTests: XCTestCase {
     func testCellViewModel() {
         //Given APIMeteorite
         let meteorite:Meteorite = APIMeteorite.init(name: "Meteorite",
-                                       id: "0",
-                                       nametype: "Valid",
-                                       recclass: "H6",
-                                       mass: "750.0",
-                                       fall: "Found",
-                                       year: "1934-01-01T00:00:00.000",
-                                       reclat: "-30.883330",
-                                       reclong: "-64.550000",
-                                       geolocation: Geolocation.init(type:"Point",
-                                                                     coordinates:[1.1,2.2]))
+                                                    id: "0",
+                                                    nametype: "Valid",
+                                                    recclass: "H6",
+                                                    mass: "750.0",
+                                                    fall: "Found",
+                                                    year: "1934-01-01T00:00:00.000",
+                                                    reclat: "-30.883330",
+                                                    reclong: "-64.550000",
+                                                    geolocation: Geolocation.init(type:"Point",
+                                                                                  coordinates:[1.1,2.2]))
         let meteoriteWithoutMass = APIMeteorite.init(name: "Meteorite",
-                                                  id: "0",
-                                                  nametype: "Valid",
-                                                  recclass: "H6",
-                                                  mass: nil,
-                                                  fall: "Found",
-                                                  year: "1934-01-01T00:00:00.000",
-                                                  reclat: "-30.883330",
-                                                  reclong: "-64.550000",
-                                                  geolocation: Geolocation.init(type:"Point",
-                                                                                coordinates:[1.1,2.2]))
+                                                     id: "0",
+                                                     nametype: "Valid",
+                                                     recclass: "H6",
+                                                     mass: nil,
+                                                     fall: "Found",
+                                                     year: "1934-01-01T00:00:00.000",
+                                                     reclat: "-30.883330",
+                                                     reclong: "-64.550000",
+                                                     geolocation: Geolocation.init(type:"Point",
+                                                                                   coordinates:[1.1,2.2]))
         let meteoriteWithoutYear = APIMeteorite.init(name: "Meteorite",
-                                                  id: "0",
-                                                  nametype: "Valid",
-                                                  recclass: "H6",
-                                                  mass: "750",
-                                                  fall: "Found",
-                                                  year: nil,
-                                                  reclat: "-30.883330",
-                                                  reclong: "-64.550000",
-                                                  geolocation: Geolocation.init(type:"Point",
-                                                                                coordinates:[1.1,2.2]))
+                                                     id: "0",
+                                                     nametype: "Valid",
+                                                     recclass: "H6",
+                                                     mass: "750",
+                                                     fall: "Found",
+                                                     year: nil,
+                                                     reclat: "-30.883330",
+                                                     reclong: "-64.550000",
+                                                     geolocation: Geolocation.init(type:"Point",
+                                                                                   coordinates:[1.1,2.2]))
         
         // When creat cell view model
         let cellViewModel = sut!.createCellViewModel(meteorite: meteorite)
         let cellViewModelWithoutMass = sut!.createCellViewModel(meteorite: meteoriteWithoutMass)
         let cellViewModelWithoutYear = sut!.createCellViewModel(meteorite: meteoriteWithoutYear)
-
+        
         // Assert the correctness of display information
         XCTAssertEqual(meteorite.mName, cellViewModel.titleText)
         XCTAssertEqual(meteorite.mDate, cellViewModel.dateText)
         XCTAssertEqual(String(meteorite.mSize), cellViewModel.sizeText)
-
+        
         XCTAssertEqual(cellViewModelWithoutMass.sizeText, "UNKNOWN")
         XCTAssertEqual(cellViewModelWithoutYear.dateText, "UNKNOWN")
     }
@@ -208,8 +208,8 @@ class MockApiService: APIServiceProtocol {
     var completeClosure: ((Bool, [Meteorite], APIError?) -> ())!
     
     func fetchMeteoriteInfo(complete: @escaping (Bool, [Meteorite], APIError?) -> ()) {
-         isFetchMeteoriteCalled = true
-         completeClosure = complete
+        isFetchMeteoriteCalled = true
+        completeClosure = complete
     }
     
     func fetchSuccess() {
