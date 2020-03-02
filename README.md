@@ -37,5 +37,4 @@ Alamofire: an HTTP networking library written in Swift.
 
 ## Next step:
 
-*  Replace UIStoryboard with AutoLayout code
 *  Make Generic Networking Layer or install Moya Networking pod
