@@ -32,44 +32,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ygo-rQ-aAZ" id="hzn-Xh-bsx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnu-e1-CPq">
-                                                    <rect key="frame" x="20" y="11" width="42" height="37"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="37" id="LPt-qt-FfM"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-Nm-5n1">
-                                                    <rect key="frame" x="352" y="27" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHs-Xg-8C7">
-                                                    <rect key="frame" x="20" y="54" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="TCc-Nm-5n1" firstAttribute="trailing" secondItem="hzn-Xh-bsx" secondAttribute="trailingMargin" id="DeY-bP-ml8"/>
-                                                <constraint firstItem="EHs-Xg-8C7" firstAttribute="leading" secondItem="wnu-e1-CPq" secondAttribute="leading" id="Gv4-O7-7u7"/>
-                                                <constraint firstItem="EHs-Xg-8C7" firstAttribute="trailing" secondItem="wnu-e1-CPq" secondAttribute="trailing" id="SOT-7A-n5u"/>
-                                                <constraint firstItem="TCc-Nm-5n1" firstAttribute="baseline" secondItem="wnu-e1-CPq" secondAttribute="baseline" id="XVW-eh-c6P"/>
-                                                <constraint firstItem="EHs-Xg-8C7" firstAttribute="top" secondItem="wnu-e1-CPq" secondAttribute="bottom" constant="6" id="XwR-x9-l1q"/>
-                                                <constraint firstItem="wnu-e1-CPq" firstAttribute="leading" secondItem="hzn-Xh-bsx" secondAttribute="leadingMargin" id="Zaj-4r-r4t"/>
-                                                <constraint firstItem="wnu-e1-CPq" firstAttribute="top" secondItem="hzn-Xh-bsx" secondAttribute="topMargin" id="vd6-cc-hYX"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="TCc-Nm-5n1" id="e8R-Jw-H76"/>
-                                            <outlet property="nameLabel" destination="wnu-e1-CPq" id="Cci-uJ-uOs"/>
-                                            <outlet property="sizeLabel" destination="EHs-Xg-8C7" id="R3Z-7h-yqu"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
