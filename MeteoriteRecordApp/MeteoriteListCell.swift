@@ -16,15 +16,16 @@ class MeteoriteListCell: UITableViewCell {
             dateLabel.text = meteoriteListCellViewModel?.dateText
         }
     }
-    
     private var nameLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     private var sizeLabel: UILabel = {
          let label = UILabel()
+         label.translatesAutoresizingMaskIntoConstraints = false
          label.font = UIFont.boldSystemFont(ofSize: 14)
          label.textColor = .lightGray
          return label
@@ -32,15 +33,13 @@ class MeteoriteListCell: UITableViewCell {
     
     private var dateLabel: UILabel = {
          let label = UILabel()
+         label.translatesAutoresizingMaskIntoConstraints = false
          label.font = UIFont.boldSystemFont(ofSize: 16)
          return label
      }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        sizeLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(nameLabel)
         self.addSubview(sizeLabel)
         self.addSubview(dateLabel)
@@ -48,7 +47,7 @@ class MeteoriteListCell: UITableViewCell {
         setSizeLabelConstraints()
         setDataLabelConstraints()
     }
-  
+    
     func setNameLabelConstraints() {
         let nameLabelConstraints = [
         nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),

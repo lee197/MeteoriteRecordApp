@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MeteoriteListViewController: UIViewController {
 
@@ -62,19 +63,9 @@ class MeteoriteListViewController: UIViewController {
         alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func showMeteoriteDetail(selectedMeteorite:Meteorite) {
-       guard let vc = storyboard?.instantiateViewController(identifier: "MeteoriteDetailViewController", creator: { coder in
-        return MeteoriteDetailViewController(coder: coder, meteoriteDetailVM:  MeteoriteDetailViewModel(meteorite: selectedMeteorite))
-           }) else {
-               fatalError("Failed to load MeteoriteDetailViewController from storyboard.")
-           }
-
-           navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
-extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource{
+extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meteoriteVM.numberOfCells
@@ -107,7 +98,8 @@ extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let selectedMeteorite = meteoriteVM.selectedMeteorite {
-            showMeteoriteDetail(selectedMeteorite: selectedMeteorite)
+            let vc = MeteoriteDetailViewController( meteoriteDetailVM:MeteoriteDetailViewModel(meteorite: selectedMeteorite))
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
