@@ -15,7 +15,7 @@
 		3986EF9E240813D600075516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9D240813D600075516 /* Assets.xcassets */; };
 		3986EFA1240813D600075516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9F240813D600075516 /* LaunchScreen.storyboard */; };
 		3986EFAC240813D600075516 /* MeteoriteRecordAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */; };
-		3986EFC02408685B00075516 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFBF2408685B00075516 /* APIService.swift */; };
+		3986EFC02408685B00075516 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFBF2408685B00075516 /* APIClient.swift */; };
 		3986EFC3240869A100075516 /* Meteorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFC2240869A100075516 /* Meteorite.swift */; };
 		3986EFC724086CF000075516 /* APIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFC624086CF000075516 /* APIServiceTest.swift */; };
 		3986EFC924086D9800075516 /* ApiTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3986EFC824086D9700075516 /* ApiTestData.json */; };
@@ -50,7 +50,7 @@
 		3986EFA7240813D600075516 /* MeteoriteRecordAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoriteRecordAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteRecordAppTests.swift; sourceTree = "<group>"; };
 		3986EFAD240813D600075516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3986EFBF2408685B00075516 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		3986EFBF2408685B00075516 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		3986EFC2240869A100075516 /* Meteorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorite.swift; sourceTree = "<group>"; };
 		3986EFC624086CF000075516 /* APIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTest.swift; sourceTree = "<group>"; };
 		3986EFC824086D9700075516 /* ApiTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ApiTestData.json; path = MeteoriteRecordApp/ApiTestData.json; sourceTree = SOURCE_ROOT; };
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				3986EFC824086D9700075516 /* ApiTestData.json */,
-				3986EFBF2408685B00075516 /* APIService.swift */,
+				3986EFBF2408685B00075516 /* APIClient.swift */,
 			);
 			path = NetworkingService;
 			sourceTree = "<group>";
@@ -370,7 +370,7 @@
 				3986EF99240813D300075516 /* MeteoriteListViewController.swift in Sources */,
 				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
 				393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */,
-				3986EFC02408685B00075516 /* APIService.swift in Sources */,
+				3986EFC02408685B00075516 /* APIClient.swift in Sources */,
 				3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */,
 				3986EFC3240869A100075516 /* Meteorite.swift in Sources */,
 				3986EFD22409655900075516 /* MeteoriteDetailViewController.swift in Sources */,

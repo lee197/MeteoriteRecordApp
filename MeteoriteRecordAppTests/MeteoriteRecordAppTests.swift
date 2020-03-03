@@ -26,6 +26,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testFetchMeteorite() {
+        
         // Given
         mockAPIService.completeMeteorites = [Meteorite]()
         
@@ -39,7 +40,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     func testFetchMeteoriteFail() {
         
         // Given a failed fetch with a certain failure
-        let error = APIError.permissionDenied
+        let error = APIError.clientError
         
         // When
         sut.initFetch()
@@ -50,6 +51,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testCreateCellViewModel() {
+        
         // Given
         let meteorites = DataGenerator().createMeteorite()
         mockAPIService.completeMeteorites = meteorites
@@ -70,6 +72,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testLoadingWhileFetching() {
+        
         //Given
         var loadingStatus = false
         let expect = XCTestExpectation(description: "Loading status updated")
@@ -129,6 +132,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testGetCellViewModel() {
+        
         //Given a sut with fetched meteorites
         goToFetchMeteoriteFinished()
         let indexPath = IndexPath(row: 1, section: 0)
@@ -142,6 +146,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     }
     
     func testCellViewModel() {
+        
         //Given APIMeteorite
         let meteorite:Meteorite = APIMeteorite.init(name: "Meteorite",
                                                     id: "0",
@@ -201,23 +206,22 @@ extension MeteoriteRecordAppTests {
     }
 }
 
-class MockApiService: APIServiceProtocol {
+class MockApiService: APIClientProtocol {
     var isFetchMeteoriteCalled = false
-    
     var completeMeteorites: [Meteorite] = [Meteorite]()
-    var completeClosure: ((Bool, [Meteorite], APIError?) -> ())!
+    var completeClosure: ((Result<[Meteorite], APIError>) -> ())!
     
-    func fetchMeteoriteInfo(complete: @escaping (Bool, [Meteorite], APIError?) -> ()) {
-        isFetchMeteoriteCalled = true
-        completeClosure = complete
+    func fetchInfo(complete: @escaping (Result<[Meteorite], APIError>) -> ()) {
+           isFetchMeteoriteCalled = true
+           completeClosure = complete
     }
     
     func fetchSuccess() {
-        completeClosure(true, completeMeteorites, nil)
+//        completeClosure(Result<[Meteorite], APIError>(catching: { completeMeteorites }))
     }
     
-    func fetchFail(error: APIError?) {
-        completeClosure(false, completeMeteorites, error)
+    func fetchFail(error: APIError) {
+//        completeClosure(Result<[Meteorite], APIError>(catching: { throw error }))
     }
 }
 

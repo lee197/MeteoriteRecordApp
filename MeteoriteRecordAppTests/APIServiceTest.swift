@@ -11,11 +11,11 @@ import XCTest
 
 class APIServiceTest: XCTestCase {
     
-    var sut: APIService?
+    var sut: APIClient?
     
     override func setUp() {
         super.setUp()
-        sut = APIService()
+        sut = APIClient()
     }
     
     override func tearDown() {
@@ -30,16 +30,18 @@ class APIServiceTest: XCTestCase {
         
         // When fetch info
         let expect = XCTestExpectation(description: "callback")
-        
-        sut.fetchMeteoriteInfo(complete: { (success, meteorites, error) in
+        sut.fetchInfo(){ result in
             expect.fulfill()
-            XCTAssertEqual(meteorites.count, 1000)
-            for meteorite in meteorites {
-                XCTAssertNotNil(meteorite.mName)
+            switch result{
+            case .success(let meteorites):
+                XCTAssertEqual(meteorites.count, 1000)
+                for meteorite in meteorites {
+                    XCTAssertNotNil(meteorite.mName)
+                }
+            case .failure(_): break
             }
-        })
+        }
         
-        wait(for: [expect], timeout: 3.1)
     }
     
 }

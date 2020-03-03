@@ -29,7 +29,7 @@ class MeteoriteListViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.view.addSubview(tableView)
-
+        
         activityIndicator.center = self.tableView.center
         self.view.addSubview(activityIndicator)
         

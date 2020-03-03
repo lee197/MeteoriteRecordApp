@@ -9,7 +9,7 @@
 import Foundation
 
 class MeteoriteViewModel {
-    let apiService: APIServiceProtocol
+    let apiService: APIClientProtocol
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
         didSet {
@@ -36,18 +36,20 @@ class MeteoriteViewModel {
     var updateLoadingStatus: (()->())?
     let sizeAbsence = Double(APINULL.noSize.rawValue)
     
-    init(apiService: APIServiceProtocol = APIService()) {
+    init(apiService: APIClientProtocol = APIClient()) {
         self.apiService = apiService
     }
     
     func initFetch() {
         self.isLoading = true
-        apiService.fetchMeteoriteInfo {[weak self](success, meteorites, error) in
+
+        apiService.fetchInfo(){ [weak self] result in
             self?.isLoading = false
-            if let error = error {
-                self?.alertMessage = error.rawValue
-            } else {
+            switch result{
+            case .success(let meteorites):
                 self?.processMeteoriteToCellModel(meteorites: meteorites)
+            case .failure(let error):
+                self?.alertMessage = error.localizedDescription
             }
         }
     }
