@@ -21,7 +21,7 @@ protocol APIClientProtocol {
 
 struct APIClient: APIClientProtocol {
     func fetchInfo(complete completion: @escaping (Result<[Meteorite], APIError>) -> Void) {
-        guard let url = URL(string: "https://data.nasa.gov/resource/y77d-th95.json") else{
+        guard let url = Environment.production.baseUrl else{
             return
         }
         

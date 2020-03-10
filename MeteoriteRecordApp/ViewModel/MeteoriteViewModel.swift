@@ -8,8 +8,8 @@
 
 import Foundation
 
-class MeteoriteViewModel {
-    let apiService: APIClientProtocol
+final class MeteoriteViewModel {
+    private let apiService: APIClientProtocol
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
         didSet {
@@ -57,11 +57,7 @@ class MeteoriteViewModel {
     private func processMeteoriteToCellModel(meteorites: [Meteorite]) {
         
         self.meteoriteList = meteorites.sorted(by: { $0.mSize > $1.mSize })
-        var cellVMs = [MeteoriteListCellViewModel]()
-        for meteorite in self.meteoriteList {
-            cellVMs.append(createCellViewModel(meteorite: meteorite))
-        }
-        self.cellViewModels = cellVMs
+        self.cellViewModels = self.meteoriteList.map { createCellViewModel(meteorite: $0) }
     }
     
     func getCellViewModel( at indexPath: IndexPath ) -> MeteoriteListCellViewModel {
@@ -88,7 +84,7 @@ class MeteoriteViewModel {
 extension MeteoriteViewModel {
     func userPressed( at indexPath: IndexPath ) {
         let meteorite = self.meteoriteList[indexPath.row]
-        if !meteorite.mLocation.coordinates.isEmpty{
+        if !meteorite.mLocation.location.isEmpty{
             self.isSegueAllowed = true
             self.selectedMeteorite = meteorite
         }else{

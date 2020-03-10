@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 class MeteoriteDetailViewController: UIViewController {
     
-    var meteoriteDetailVM: MeteoriteDetailViewModel
-    var detailView: DetailView!
+    private let meteoriteDetailVM: MeteoriteDetailViewModel
+    private var detailView: DetailView!
     
     init(meteoriteDetailVM: MeteoriteDetailViewModel) {
         self.meteoriteDetailVM = meteoriteDetailVM
@@ -43,17 +43,17 @@ class MeteoriteDetailViewController: UIViewController {
         showMeteoriteInfo()
     }
     
-    func showMeteoriteInfo() {
+    private func showMeteoriteInfo() {
         detailView.mNameLabel.text = meteoriteDetailVM.getMeteorite().mName
         detailView.mSizeLabel.text = String(meteoriteDetailVM.getMeteorite().mSize)
         detailView.mDateLabel.text = meteoriteDetailVM.getMeteorite().mDate
-        detailView.latitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[0])
-        detailView.longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.coordinates[1])
+        detailView.latitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.location.latitude)
+        detailView.longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.location.longitude)
     }
     
-    func showOnMap() {
-        let location = CLLocationCoordinate2D(latitude: meteoriteDetailVM.getMeteorite().mLocation.coordinates[1],
-                                              longitude: meteoriteDetailVM.getMeteorite().mLocation.coordinates[0])
+    private func showOnMap() {
+        let location = CLLocationCoordinate2D(latitude: meteoriteDetailVM.getMeteorite().mLocation.location.latitude,
+                                              longitude: meteoriteDetailVM.getMeteorite().mLocation.location.longitude)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location, span: span)

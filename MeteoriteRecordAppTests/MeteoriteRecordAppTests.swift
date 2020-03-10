@@ -148,7 +148,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     func testCellViewModel() {
         
         //Given APIMeteorite
-        let meteorite:Meteorite = APIMeteorite.init(name: "Meteorite",
+        let meteorite:Meteorite = APIMeteorite(name: "Meteorite",
                                                     id: "0",
                                                     nametype: "Valid",
                                                     recclass: "H6",
@@ -159,7 +159,7 @@ class MeteoriteRecordAppTests: XCTestCase {
                                                     reclong: "-64.550000",
                                                     geolocation: Geolocation.init(type:"Point",
                                                                                   coordinates:[1.1,2.2]))
-        let meteoriteWithoutMass = APIMeteorite.init(name: "Meteorite",
+        let meteoriteWithoutMass = APIMeteorite(name: "Meteorite",
                                                      id: "0",
                                                      nametype: "Valid",
                                                      recclass: "H6",
@@ -170,7 +170,7 @@ class MeteoriteRecordAppTests: XCTestCase {
                                                      reclong: "-64.550000",
                                                      geolocation: Geolocation.init(type:"Point",
                                                                                    coordinates:[1.1,2.2]))
-        let meteoriteWithoutYear = APIMeteorite.init(name: "Meteorite",
+        let meteoriteWithoutYear = APIMeteorite(name: "Meteorite",
                                                      id: "0",
                                                      nametype: "Valid",
                                                      recclass: "H6",
@@ -217,11 +217,11 @@ class MockApiService: APIClientProtocol {
     }
     
     func fetchSuccess() {
-//        completeClosure(Result<[Meteorite], APIError>(catching: { completeMeteorites }))
+        completeClosure(Result<[Meteorite], APIError>(catching: { completeMeteorites }))
     }
     
     func fetchFail(error: APIError) {
-//        completeClosure(Result<[Meteorite], APIError>(catching: { throw error }))
+        completeClosure(Result<[Meteorite], APIError>(catching: { throw error }))
     }
 }
 
