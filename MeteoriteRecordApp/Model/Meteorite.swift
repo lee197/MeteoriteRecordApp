@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum APINULL: String {
+enum APINULL:String, Error {
     case noSize = "-1"
     case noYear = "NoYear"
 }
 
-protocol Meteorite{
+protocol Meteorite {
     var mName: String{ get }
     var mSize: Double{ get }
     var mDate: String{ get }
@@ -21,12 +21,34 @@ protocol Meteorite{
 }
 
 struct APIMeteorite: Codable {
-    let name, id, nametype, recclass: String
-    let mass: String?
-    let fall: String
-    let year: String?
-    let reclat, reclong: String?
-    let geolocation: Geolocation?
+     private let name, id, nametype, recclass: String
+     private let mass: String?
+     private let fall: String
+     private let year: String?
+     private let reclat, reclong: String?
+     private let geolocation: Geolocation?
+    
+    init(name:String,
+         id:String,
+         nametype:String,
+         recclass:String,
+         mass:String?,
+         fall:String,
+         year:String?,
+         reclat:String?,
+         reclong:String?,
+         geolocation:Geolocation) {
+        self.name = name
+        self.id = id
+        self.geolocation = geolocation
+        self.mass = mass
+        self.nametype = nametype
+        self.recclass = recclass
+        self.reclat = reclat
+        self.reclong = reclong
+        self.fall = fall
+        self.year = year
+    }
 }
 
 extension APIMeteorite: Meteorite {
@@ -39,10 +61,25 @@ extension APIMeteorite: Meteorite {
         }
     }
     var mDate: String { year?.components(separatedBy: "T")[0] ?? APINULL.noYear.rawValue }
-    var mLocation: Geolocation { geolocation ?? Geolocation(type: "Point", coordinates: []) }
+    var mLocation: Geolocation { geolocation ?? Geolocation(type: "Point", coordinates: [360,360]) }
 }
 
 struct Geolocation: Codable {
     let type: String
-    let coordinates: [Double]
+    private let coordinates: [Double]
+    var location: Coordinates{ Coordinates(latitude: coordinates[1],
+                                           longitude: coordinates[0])
+                              }
+    init(type:String,coordinates:[Double]) {
+        self.type = type
+        self.coordinates = coordinates
+    }
+}
+
+struct Coordinates{
+    var latitude:Double
+    var longitude:Double
+    var isEmpty:Bool{
+        return latitude == 360 && longitude == 360
+    }
 }

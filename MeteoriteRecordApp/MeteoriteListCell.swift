@@ -53,7 +53,7 @@ class MeteoriteListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setNameLabelConstraints() {
+   private func setNameLabelConstraints() {
         let nameLabelConstraints = [
             nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
@@ -62,7 +62,7 @@ class MeteoriteListCell: UITableViewCell {
         NSLayoutConstraint.activate(nameLabelConstraints)
     }
     
-    func setSizeLabelConstraints() {
+   private func setSizeLabelConstraints() {
         let sizeLabelConstraints = [
             sizeLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
             sizeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
@@ -71,7 +71,7 @@ class MeteoriteListCell: UITableViewCell {
         NSLayoutConstraint.activate(sizeLabelConstraints)
     }
     
-    func setDataLabelConstraints() {
+   private func setDataLabelConstraints() {
         let dataLabelConstraints = [
             dateLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -20),
             dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),

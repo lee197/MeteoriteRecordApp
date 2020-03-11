@@ -16,7 +16,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     override func setUp() {
         super.setUp()
         mockAPIService = MockApiService()
-        sut = MeteoriteViewModel(apiService: mockAPIService)
+        sut = MeteoriteViewModel(apiClient: mockAPIService)
     }
     
     override func tearDown() {
@@ -41,13 +41,14 @@ class MeteoriteRecordAppTests: XCTestCase {
         
         // Given a failed fetch with a certain failure
         let error = APIError.clientError
+        let alert = UserAlert.userError
         
         // When
         sut.initFetch()
         mockAPIService.fetchFail(error: error)
         
         // Sut should display predefined error message
-        XCTAssertEqual(sut.alertMessage, error.rawValue)
+        XCTAssertEqual(sut.alertMessage, alert.rawValue)
     }
     
     func testCreateCellViewModel() {
@@ -148,7 +149,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     func testCellViewModel() {
         
         //Given APIMeteorite
-        let meteorite:Meteorite = APIMeteorite.init(name: "Meteorite",
+        let meteorite:Meteorite = APIMeteorite(name: "Meteorite",
                                                     id: "0",
                                                     nametype: "Valid",
                                                     recclass: "H6",
@@ -159,7 +160,7 @@ class MeteoriteRecordAppTests: XCTestCase {
                                                     reclong: "-64.550000",
                                                     geolocation: Geolocation.init(type:"Point",
                                                                                   coordinates:[1.1,2.2]))
-        let meteoriteWithoutMass = APIMeteorite.init(name: "Meteorite",
+        let meteoriteWithoutMass = APIMeteorite(name: "Meteorite",
                                                      id: "0",
                                                      nametype: "Valid",
                                                      recclass: "H6",
@@ -170,7 +171,7 @@ class MeteoriteRecordAppTests: XCTestCase {
                                                      reclong: "-64.550000",
                                                      geolocation: Geolocation.init(type:"Point",
                                                                                    coordinates:[1.1,2.2]))
-        let meteoriteWithoutYear = APIMeteorite.init(name: "Meteorite",
+        let meteoriteWithoutYear = APIMeteorite(name: "Meteorite",
                                                      id: "0",
                                                      nametype: "Valid",
                                                      recclass: "H6",
@@ -217,11 +218,11 @@ class MockApiService: APIClientProtocol {
     }
     
     func fetchSuccess() {
-//        completeClosure(Result<[Meteorite], APIError>(catching: { completeMeteorites }))
+        completeClosure(.success(completeMeteorites))
     }
     
     func fetchFail(error: APIError) {
-//        completeClosure(Result<[Meteorite], APIError>(catching: { throw error }))
+        completeClosure(.failure(error))
     }
 }
 

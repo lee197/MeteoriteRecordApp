@@ -14,19 +14,19 @@ class DetailView: UIView {
     var mNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.title)
         return label
     }()
     var mSizeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.smallTitle)
         return label
     }()
-    var mSizeTitleLabel: UILabel = {
+   private var mSizeTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+    label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.content)
         label.text = "size:"
         label.textColor = .lightGray
         return label
@@ -34,13 +34,13 @@ class DetailView: UIView {
     var mDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.smallTitle)
         return label
     }()
-    var mDateTitleLabel: UILabel = {
+   private var mDateTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+    label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.content)
         label.text = "date:"
         label.textColor = .lightGray
         return label
@@ -48,13 +48,13 @@ class DetailView: UIView {
     var latitudeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.smallTitle)
         return label
     }()
-    var latitudeTitleLabel: UILabel = {
+   private var latitudeTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+    label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.content)
         label.text = "latitude:"
         label.textColor = .lightGray
         return label
@@ -62,13 +62,13 @@ class DetailView: UIView {
     var longitudeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.smallTitle)
         return label
     }()
-    var longitudeTitleLabel: UILabel = {
+   private var longitudeTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+    label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.content)
         label.text = "longitude:"
         label.textColor = .lightGray
         return label
@@ -90,7 +90,7 @@ class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+   private func setupViews() {
         self.addSubview(mapView)
         self.addSubview(mNameLabel)
         self.addSubview(mSizeLabel)
@@ -105,7 +105,7 @@ class DetailView: UIView {
         self.addSubview(longitudeTitleLabel)
     }
     
-    func setupConstraints() {
+   private func setupConstraints() {
         self.translatesAutoresizingMaskIntoConstraints = false
         setupMapViewConstraints()
         setupSizeLabelConstraints()
@@ -115,66 +115,66 @@ class DetailView: UIView {
         setupNameLabelConstraints()
     }
     
-    func setupNameLabelConstraints(){
+   private func setupNameLabelConstraints(){
         NSLayoutConstraint.activate(
             [mNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
-             mNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             mNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: 20),
-             mNameLabel.heightAnchor.constraint(equalToConstant: 40)
+             mNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
+             mNameLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
     }
-    func setupSizeLabelConstraints(){
+   private func setupSizeLabelConstraints(){
         NSLayoutConstraint.activate(
-            [mSizeTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             mSizeTitleLabel.bottomAnchor.constraint(equalTo: mSizeLabel.topAnchor, constant: 0),
-             mSizeTitleLabel.heightAnchor.constraint(equalToConstant: 30)
+            [mSizeTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mSizeTitleLabel.bottomAnchor.constraint(equalTo: mSizeLabel.topAnchor, constant: Layout.LabelConstraint.bottom),
+             mSizeTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
         NSLayoutConstraint.activate(
-            [mSizeLabel.topAnchor.constraint(equalTo: mNameLabel.bottomAnchor, constant: 60),
-             mSizeLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             mSizeLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: 20),
-             mSizeLabel.heightAnchor.constraint(equalToConstant: 30)
-        ])
-    }
-    func setupDateLabelConstraints(){
-        NSLayoutConstraint.activate(
-            [mDateTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             mDateTitleLabel.bottomAnchor.constraint(equalTo: mDateLabel.topAnchor, constant: 0),
-             mDateTitleLabel.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        NSLayoutConstraint.activate(
-            [mDateLabel.topAnchor.constraint(equalTo: mSizeLabel.bottomAnchor, constant: 60),
-             mDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             mDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: 20),
-             mDateLabel.heightAnchor.constraint(equalToConstant: 30)
+            [mSizeLabel.topAnchor.constraint(equalTo: mNameLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
+             mSizeLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mSizeLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
+             mSizeLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
     }
-    func setuplatLabelConstraints(){
+  private func setupDateLabelConstraints(){
         NSLayoutConstraint.activate(
-            [latitudeTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             latitudeTitleLabel.bottomAnchor.constraint(equalTo: latitudeLabel.topAnchor, constant: 0),
-             latitudeTitleLabel.heightAnchor.constraint(equalToConstant: 30)
+            [mDateTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mDateTitleLabel.bottomAnchor.constraint(equalTo: mDateLabel.topAnchor, constant: Layout.LabelConstraint.bottom),
+             mDateTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
         NSLayoutConstraint.activate(
-            [latitudeLabel.topAnchor.constraint(equalTo: mDateLabel.bottomAnchor, constant: 60),
-             latitudeLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-             latitudeLabel.heightAnchor.constraint(equalToConstant: 30)
+            [mDateLabel.topAnchor.constraint(equalTo: mSizeLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
+             mDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
+             mDateLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
     }
-    func setupLonLabelConstraints(){
+   private func setuplatLabelConstraints(){
+        NSLayoutConstraint.activate(
+            [latitudeTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             latitudeTitleLabel.bottomAnchor.constraint(equalTo: latitudeLabel.topAnchor, constant: Layout.LabelConstraint.bottom),
+             latitudeTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
+        ])
+        NSLayoutConstraint.activate(
+            [latitudeLabel.topAnchor.constraint(equalTo: mDateLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
+             latitudeLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             latitudeLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
+        ])
+    }
+   private func setupLonLabelConstraints(){
         NSLayoutConstraint.activate(
             [longitudeTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -50),
-             longitudeTitleLabel.bottomAnchor.constraint(equalTo: longitudeLabel.topAnchor, constant: 0),
-             longitudeTitleLabel.heightAnchor.constraint(equalToConstant: 30)
+             longitudeTitleLabel.bottomAnchor.constraint(equalTo: longitudeLabel.topAnchor, constant: Layout.LabelConstraint.bottom),
+             longitudeTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
         NSLayoutConstraint.activate(
-            [longitudeLabel.topAnchor.constraint(equalTo: mDateLabel.bottomAnchor, constant: 60),
+            [longitudeLabel.topAnchor.constraint(equalTo: mDateLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
              longitudeLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -50),
-             longitudeLabel.heightAnchor.constraint(equalToConstant: 30)
+             longitudeLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
     }
     
-    func setupMapViewConstraints(){
+   private func setupMapViewConstraints(){
         NSLayoutConstraint.activate(
             [mapView.topAnchor.constraint(equalTo: longitudeLabel.bottomAnchor,constant: 20),
              mapView.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 0),
@@ -182,5 +182,29 @@ class DetailView: UIView {
              mapView.rightAnchor.constraint(equalTo: self.rightAnchor,constant: 0),
         ])
         
+    }
+}
+
+private extension DetailView{
+    
+    enum Layout{
+        
+        enum LabelFontSize{
+            
+            static let title:CGFloat = 36
+            static let content:CGFloat = 16
+            static let smallTitle:CGFloat = 14
+        }
+        
+        enum LabelSize{
+            static let height:CGFloat = 30
+        }
+        
+        enum LabelConstraint{
+              static let leading:CGFloat = 20
+              static let trailing:CGFloat = 20
+              static let top:CGFloat = 60
+              static let bottom:CGFloat = 0
+          }
     }
 }
