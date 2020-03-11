@@ -61,15 +61,14 @@ extension APIMeteorite: Meteorite {
         }
     }
     var mDate: String { year?.components(separatedBy: "T")[0] ?? APINULL.noYear.rawValue }
-    var mLocation: Geolocation { geolocation ?? Geolocation(type: "Point", coordinates: []) }
+    var mLocation: Geolocation { geolocation ?? Geolocation(type: "Point", coordinates: [360,360]) }
 }
 
 struct Geolocation: Codable {
     let type: String
     private let coordinates: [Double]
     var location: Coordinates{ Coordinates(latitude: coordinates[1],
-                                           longitude: coordinates[0],
-                                           isEmpty: coordinates.isEmpty)
+                                           longitude: coordinates[0])
                               }
     init(type:String,coordinates:[Double]) {
         self.type = type
@@ -80,5 +79,7 @@ struct Geolocation: Codable {
 struct Coordinates{
     var latitude:Double
     var longitude:Double
-    var isEmpty:Bool
+    var isEmpty:Bool{
+        return latitude == 360 && longitude == 360
+    }
 }

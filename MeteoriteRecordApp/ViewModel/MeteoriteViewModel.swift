@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum UserAlert:  String, Error {
+    case userError = "Please make sure your network is working fine or re-launch the app"
+    case serverError = "Please wait a while and re-launch the app"
+}
+
 final class MeteoriteViewModel {
-    private let apiService: APIClientProtocol
+    private let apiClient: APIClientProtocol
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
         didSet {
@@ -36,21 +41,31 @@ final class MeteoriteViewModel {
     var updateLoadingStatus: (()->())?
     let sizeAbsence = Double(APINULL.noSize.rawValue)
     
-    init(apiService: APIClientProtocol = APIClient()) {
-        self.apiService = apiService
+    init(apiClient: APIClientProtocol = APIClient()) {
+        self.apiClient = apiClient
     }
     
     func initFetch() {
         self.isLoading = true
-
-        apiService.fetchInfo(){ [weak self] result in
+        
+        apiClient.fetchInfo(){ [weak self] result in
             self?.isLoading = false
             switch result{
             case .success(let meteorites):
                 self?.processMeteoriteToCellModel(meteorites: meteorites)
             case .failure(let error):
-                self?.alertMessage = error.localizedDescription
+                self?.processError(error: error)
             }
+        }
+    }
+    
+    private func processError(error:APIError){
+        switch error {
+        case .clientError:
+            self.alertMessage = UserAlert.userError.rawValue
+            
+        case .serverError,.noData,.dataDecodingError:
+            self.alertMessage = UserAlert.serverError.rawValue
         }
     }
     

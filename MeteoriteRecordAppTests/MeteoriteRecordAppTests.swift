@@ -16,7 +16,7 @@ class MeteoriteRecordAppTests: XCTestCase {
     override func setUp() {
         super.setUp()
         mockAPIService = MockApiService()
-        sut = MeteoriteViewModel(apiService: mockAPIService)
+        sut = MeteoriteViewModel(apiClient: mockAPIService)
     }
     
     override func tearDown() {
@@ -41,13 +41,14 @@ class MeteoriteRecordAppTests: XCTestCase {
         
         // Given a failed fetch with a certain failure
         let error = APIError.clientError
+        let alert = UserAlert.userError
         
         // When
         sut.initFetch()
         mockAPIService.fetchFail(error: error)
         
         // Sut should display predefined error message
-        XCTAssertEqual(sut.alertMessage, error.rawValue)
+        XCTAssertEqual(sut.alertMessage, alert.rawValue)
     }
     
     func testCreateCellViewModel() {
@@ -217,11 +218,11 @@ class MockApiService: APIClientProtocol {
     }
     
     func fetchSuccess() {
-        completeClosure(Result<[Meteorite], APIError>(catching: { completeMeteorites }))
+        completeClosure(.success(completeMeteorites))
     }
     
     func fetchFail(error: APIError) {
-        completeClosure(Result<[Meteorite], APIError>(catching: { throw error }))
+        completeClosure(.failure(error))
     }
 }
 

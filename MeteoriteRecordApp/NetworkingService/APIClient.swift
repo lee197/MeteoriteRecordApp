@@ -9,9 +9,9 @@
 import Foundation
 
 enum APIError:  String, Error {
-    case clientError = "Permission Denied"
-    case serverError = "Server error"
-    case noData = "Invalid data"
+    case clientError
+    case serverError
+    case noData
     case dataDecodingError
 }
 
