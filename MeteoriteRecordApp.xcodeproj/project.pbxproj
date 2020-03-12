@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E758A9194C31410781C3E93 /* Pods_MeteoriteRecordAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */; };
+		39220ED1241AEBAF00EF37A6 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39220ED0241AEBAF00EF37A6 /* EndPoint.swift */; };
+		39220ED3241AF7B200EF37A6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39220ED2241AF7B200EF37A6 /* APIClient.swift */; };
 		393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C41D0240D4EF900CC6CC0 /* DetailView.swift */; };
 		39733192241411600087285A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39733191241411600087285A /* Environment.swift */; };
 		3973319424145D280087285A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3973319324145D280087285A /* Global.swift */; };
@@ -17,7 +19,7 @@
 		3986EF9E240813D600075516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9D240813D600075516 /* Assets.xcassets */; };
 		3986EFA1240813D600075516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3986EF9F240813D600075516 /* LaunchScreen.storyboard */; };
 		3986EFAC240813D600075516 /* MeteoriteRecordAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */; };
-		3986EFC02408685B00075516 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFBF2408685B00075516 /* APIClient.swift */; };
+		3986EFC02408685B00075516 /* GenericAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFBF2408685B00075516 /* GenericAPIClient.swift */; };
 		3986EFC3240869A100075516 /* Meteorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFC2240869A100075516 /* Meteorite.swift */; };
 		3986EFC724086CF000075516 /* APIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFC624086CF000075516 /* APIServiceTest.swift */; };
 		3986EFC924086D9800075516 /* ApiTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3986EFC824086D9700075516 /* ApiTestData.json */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		14ADC6AFD7E0D1ACF33B2E7B /* Pods-MeteoriteRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordApp.release.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp.release.xcconfig"; sourceTree = "<group>"; };
 		16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39220ED0241AEBAF00EF37A6 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		39220ED2241AF7B200EF37A6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		393C41D0240D4EF900CC6CC0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		39733191241411600087285A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3973319324145D280087285A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -54,7 +58,7 @@
 		3986EFA7240813D600075516 /* MeteoriteRecordAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoriteRecordAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteRecordAppTests.swift; sourceTree = "<group>"; };
 		3986EFAD240813D600075516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3986EFBF2408685B00075516 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		3986EFBF2408685B00075516 /* GenericAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIClient.swift; sourceTree = "<group>"; };
 		3986EFC2240869A100075516 /* Meteorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorite.swift; sourceTree = "<group>"; };
 		3986EFC624086CF000075516 /* APIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTest.swift; sourceTree = "<group>"; };
 		3986EFC824086D9700075516 /* ApiTestData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ApiTestData.json; path = MeteoriteRecordApp/ApiTestData.json; sourceTree = SOURCE_ROOT; };
@@ -142,8 +146,10 @@
 			isa = PBXGroup;
 			children = (
 				3986EFC824086D9700075516 /* ApiTestData.json */,
-				3986EFBF2408685B00075516 /* APIClient.swift */,
+				3986EFBF2408685B00075516 /* GenericAPIClient.swift */,
 				39733191241411600087285A /* Environment.swift */,
+				39220ED0241AEBAF00EF37A6 /* EndPoint.swift */,
+				39220ED2241AF7B200EF37A6 /* APIClient.swift */,
 			);
 			path = NetworkingService;
 			sourceTree = "<group>";
@@ -372,11 +378,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39220ED1241AEBAF00EF37A6 /* EndPoint.swift in Sources */,
+				39220ED3241AF7B200EF37A6 /* APIClient.swift in Sources */,
 				3986EFD42409679300075516 /* MeteoriteDetailViewModel.swift in Sources */,
 				3986EF99240813D300075516 /* MeteoriteListViewController.swift in Sources */,
 				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
 				393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */,
-				3986EFC02408685B00075516 /* APIClient.swift in Sources */,
+				3986EFC02408685B00075516 /* GenericAPIClient.swift in Sources */,
 				3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */,
 				3986EFC3240869A100075516 /* Meteorite.swift in Sources */,
 				39733192241411600087285A /* Environment.swift in Sources */,

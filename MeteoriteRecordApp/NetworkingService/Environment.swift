@@ -18,14 +18,14 @@ enum Environment {
     var isStaging: Bool { return self == .staging }
     var isProduction: Bool { return self == .production }
     
-    var baseUrl:URL?{
+    var baseUrl:String{
         switch self {
         case .development:
-            return URL(string: "https://data.nasa.gov/resource/y77d-th95.json")
+            return "https://data.nasa.gov"
         case .staging:
-            return URL(string: "https://data.nasa.gov/resource/y77d-th95.json")
+            return "https://data.nasa.gov"
         case .production:
-            return URL(string: "https://data.nasa.gov/resource/y77d-th95.json")
+            return "https://data.nasa.gov"
         }
     }
 }

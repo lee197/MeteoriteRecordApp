@@ -36,6 +36,7 @@ class MeteoriteListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MeteoriteListCell.self, forCellReuseIdentifier: "mCell")
+        self.navigationItem.title = "Meteorite Record"
         initVM()
     }
     

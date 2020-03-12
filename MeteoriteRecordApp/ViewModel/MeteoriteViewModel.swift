@@ -14,7 +14,7 @@ enum UserAlert:  String, Error {
 }
 
 final class MeteoriteViewModel {
-    private let apiClient: APIClientProtocol
+    private let apiClient: APIClient
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
         didSet {
@@ -41,14 +41,14 @@ final class MeteoriteViewModel {
     var updateLoadingStatus: (()->())?
     let sizeAbsence = Double(APINULL.noSize.rawValue)
     
-    init(apiClient: APIClientProtocol = APIClient()) {
+    init(apiClient: APIClient = APIClient()) {
         self.apiClient = apiClient
     }
     
     func initFetch() {
         self.isLoading = true
-        
-        apiClient.fetchInfo(){ [weak self] result in
+
+        apiClient.getListInfo(from: .listRecords){ [weak self] result in
             self?.isLoading = false
             switch result{
             case .success(let meteorites):
@@ -84,7 +84,7 @@ final class MeteoriteViewModel {
         var meteoriteDate = "UNKNOWN"
         //ToFix
         if meteorite.mSize != sizeAbsence {
-            meteoriteMass = String(meteorite.mSize)
+            meteoriteMass = String(meteorite.mSize) + " KG"
         }
         if meteorite.mDate != APINULL.noYear.rawValue {
             meteoriteDate = meteorite.mDate

@@ -17,10 +17,11 @@ protocol Meteorite {
     var mName: String{ get }
     var mSize: Double{ get }
     var mDate: String{ get }
+    var mFall:String{ get }
     var mLocation: Geolocation{ get }
 }
 
-struct APIMeteorite: Codable {
+struct APIMeteorite: Decodable {
      private let name, id, nametype, recclass: String
      private let mass: String?
      private let fall: String
@@ -53,6 +54,7 @@ struct APIMeteorite: Codable {
 
 extension APIMeteorite: Meteorite {
     var mName: String { name }
+    var mFall:String { fall }
     var mSize: Double {
         if let nMass = Double(mass ?? APINULL.noSize.rawValue) {
             return nMass
