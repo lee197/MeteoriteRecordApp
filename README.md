@@ -6,35 +6,13 @@ An app to display a list of fallen meteors on Earth since 1900.
 * master - stable app releases
 * develop - development branch, merge features branches here
 
-## Dependencies:
-
-The project is using cocoapods for managing external libraries and a Gemfile for managing the cocoapods version.
-
-Installation
-```
-$ sudo gem install cocoapods
-```
-
-Create a pod file in your Xcode project directory:
-```
-$ pod init
-```
-
-Then install the pods in your Xcode project directory:
-```
-$ pod install
-```
-
-## Core Dependencies:
-
-Alamofire: an HTTP networking library written in Swift.
-
 ## Project structure:
 
-* ViewModel: viewmodel objects
-* Model: model objects
-* Networking Service: contains APIService and API json file for testing
+* ViewModel: viewmodel objects with all business logic
+* Model: data model objects
+* Networking Service: Generic Networking Layer
+* Uint test: test the all functions in viewmodel with mocked networking service
 
 ## Next step:
 
-*  Make Generic Networking Layer or install Moya Networking pod
+*  add Heading and post function to the Generic networking Layer
