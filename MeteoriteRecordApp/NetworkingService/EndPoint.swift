@@ -25,7 +25,7 @@ extension Endpoint {
     
     var request: URLRequest {
         let url = urlComponents.url!
-        return URLRequest(url: url)
+        return URLRequest(url: url,cachePolicy: .reloadIgnoringLocalCacheData)
     }
 }
 

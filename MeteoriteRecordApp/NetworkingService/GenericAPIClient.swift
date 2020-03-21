@@ -21,7 +21,7 @@ protocol APIClientProtocol {
 
 extension APIClientProtocol {
     func fetchInfo<T: Decodable>(_ type: MeteoriteRecord, decode: @escaping (Decodable) -> T?, complete completion: @escaping (Result<T, APIError>) -> Void) {
-        
+
         URLSession.shared.dataTask(with: type.request) { data, response, error in
             
             guard error == nil else {

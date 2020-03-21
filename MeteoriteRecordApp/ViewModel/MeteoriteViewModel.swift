@@ -53,18 +53,39 @@ final class MeteoriteViewModel {
             switch result{
             case .success(let meteorites):
                 self?.processMeteoriteToCellModel(meteorites: meteorites)
-                let container = try! Container()
-                
-                try! container.write { transaction in
-                    //TODO: Too much CPU, 13% CPU incraesed
-                    meteorites.forEach{item in
-                        transaction.add(item, update: .modified)
-                    }
-                    
-                }
+                self?.saveToDB(meteorites)
             case .failure(let error):
+                self?.getDbInfo()
                 self?.processError(error: error)
             }
+        }
+    }
+    
+    private func saveToDB(_ meteorites: [APIMeteorite]){
+        do {
+            let container = try Container()
+            try container.write { transaction in
+                //TODO: Too much CPU, 13% CPU incraesed
+                meteorites.forEach{item in
+                    transaction.add(item, update: .modified)
+                }
+            }
+        } catch (let error) {
+            Global.printToConsole(message: error.localizedDescription)
+        }
+    }
+    
+    private func getDbInfo(){
+        do {
+            let container = try Container()
+
+            let results = container.values(
+                APIMeteorite.self,
+                matching:nil
+            )
+            self.processMeteoriteToCellModel(meteorites: results.filter{ $0.geolocation != nil })
+        } catch (let error) {
+            Global.printToConsole(message: error.localizedDescription)
         }
     }
     

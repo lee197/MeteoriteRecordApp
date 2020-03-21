@@ -54,8 +54,8 @@ public final class GeolocationObject: Object {
     @objc dynamic var type = ""
     @objc dynamic var longitude = 0.0
     @objc dynamic var geoID = 0
-
     @objc dynamic var latitude = 0.0
+    
     public override static func primaryKey() -> String? {
         return "geoID"
     }

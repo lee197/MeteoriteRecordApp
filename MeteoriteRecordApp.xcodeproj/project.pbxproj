@@ -32,6 +32,7 @@
 		39A410C5242688B100A5025B /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C4242688B100A5025B /* Persistable.swift */; };
 		39A410C724268A7300A5025B /* WriteTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C624268A7300A5025B /* WriteTransaction.swift */; };
 		39A410C924268A8000A5025B /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C824268A8000A5025B /* Container.swift */; };
+		39A410CB2426B16000A5025B /* FetchedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410CA2426B16000A5025B /* FetchedResults.swift */; };
 		F296B275FE2E89111ABB3C3F /* Pods_MeteoriteRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		39A410C4242688B100A5025B /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		39A410C624268A7300A5025B /* WriteTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTransaction.swift; sourceTree = "<group>"; };
 		39A410C824268A8000A5025B /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		39A410CA2426B16000A5025B /* FetchedResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResults.swift; sourceTree = "<group>"; };
 		97B4B0BDB8D055692C562774 /* Pods-MeteoriteRecordAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.release.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC481C350149D8A846D71DAB /* Pods-MeteoriteRecordAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +215,7 @@
 				39A410C22426886D00A5025B /* MeteoriteObject+Persistable.swift */,
 				39A410C4242688B100A5025B /* Persistable.swift */,
 				39A410C624268A7300A5025B /* WriteTransaction.swift */,
+				39A410CA2426B16000A5025B /* FetchedResults.swift */,
 				39A410C824268A8000A5025B /* Container.swift */,
 			);
 			path = PersistentLayer;
@@ -433,6 +436,7 @@
 				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
 				393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */,
 				3986EFC02408685B00075516 /* GenericAPIClient.swift in Sources */,
+				39A410CB2426B16000A5025B /* FetchedResults.swift in Sources */,
 				39A410C5242688B100A5025B /* Persistable.swift in Sources */,
 				3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */,
 				3986EFC3240869A100075516 /* Meteorite.swift in Sources */,

@@ -12,8 +12,25 @@ import RealmSwift
 public protocol Persistable {
 
     associatedtype ManagedObject: Object
+    associatedtype Query: QueryType
 
     init(managedObject: ManagedObject)
 
     func managedObject() -> ManagedObject
+}
+
+public protocol QueryType {
+    var predicate: NSPredicate? { get }
+    var sortDescriptors: [SortDescriptor] { get }
+}
+
+public enum DefaultQuery: QueryType {
+
+    public var predicate: NSPredicate? {
+        return nil
+    }
+
+    public var sortDescriptors: [SortDescriptor] {
+        return []
+    }
 }

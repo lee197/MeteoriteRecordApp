@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 extension APIMeteorite: Persistable {
     
@@ -27,7 +28,6 @@ extension APIMeteorite: Persistable {
     
     public func managedObject() -> MeteoriteObject {
         let meteorite = MeteoriteObject()
-        
         meteorite.name = name
         meteorite.id = Int(id) ?? 0
         meteorite.recclass = recclass
@@ -41,6 +41,25 @@ extension APIMeteorite: Persistable {
         meteorite.geolocation?.longitude = geolocation?.coordinates[1] ?? 0
         meteorite.geolocation?.type = geolocation?.type ?? ""
         meteorite.geolocation?.geoID = Int((geolocation?.coordinates[0] ?? 0)*100000)
+        
         return meteorite
     }
+    
+}
+
+extension APIMeteorite {
+  public enum Query: QueryType {
+    case publisherName(String)
+
+    public var predicate: NSPredicate? {
+      switch self {
+      case .publisherName(let value):
+        return NSPredicate(format: "publisher.name == %@", value)
+      }
+    }
+
+    public var sortDescriptors: [SortDescriptor] {
+      return [SortDescriptor(keyPath:"name")]
+    }
+  }
 }
