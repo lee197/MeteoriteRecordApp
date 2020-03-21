@@ -6,7 +6,7 @@ target 'MeteoriteRecordApp' do
   use_frameworks!
 
   # Pods for MeteoriteRecordApp
-  pod 'Alamofire', '~> 5.0'
+  pod 'RealmSwift'
 
   target 'MeteoriteRecordAppTests' do
     inherit! :search_paths

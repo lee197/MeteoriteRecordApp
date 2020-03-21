@@ -47,12 +47,21 @@ final class MeteoriteViewModel {
     
     func initFetch() {
         self.isLoading = true
-
+        
         apiClient.getListInfo(from: .listRecords){ [weak self] result in
             self?.isLoading = false
             switch result{
             case .success(let meteorites):
                 self?.processMeteoriteToCellModel(meteorites: meteorites)
+                let container = try! Container()
+                
+                try! container.write { transaction in
+                    //TODO: Too much CPU, 13% CPU incraesed
+                    meteorites.forEach{item in
+                        transaction.add(item, update: .modified)
+                    }
+                    
+                }
             case .failure(let error):
                 self?.processError(error: error)
             }

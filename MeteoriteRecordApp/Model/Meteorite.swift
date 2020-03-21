@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum APINULL:String, Error {
     case noSize = "-1"
@@ -21,13 +22,13 @@ protocol Meteorite {
     var mLocation: Geolocation{ get }
 }
 
-struct APIMeteorite: Decodable {
-     private let name, id, nametype, recclass: String
-     private let mass: String?
-     private let fall: String
-     private let year: String?
-     private let reclat, reclong: String?
-     private let geolocation: Geolocation?
+struct APIMeteorite:Decodable{
+      let name, id, nametype, recclass: String
+      let mass: String?
+      let fall: String
+      let year: String?
+      let reclat, reclong: String?
+      var geolocation: Geolocation?
     
     init(name:String,
          id:String,
@@ -67,8 +68,8 @@ extension APIMeteorite: Meteorite {
 }
 
 struct Geolocation: Codable {
-    let type: String
-    private let coordinates: [Double]
+    var type: String
+    var coordinates: [Double]
     var location: Coordinates{ Coordinates(latitude: coordinates[1],
                                            longitude: coordinates[0])
                               }

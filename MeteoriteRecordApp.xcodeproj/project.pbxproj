@@ -27,6 +27,11 @@
 		3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFCE24095B3900075516 /* MeteoriteListCell.swift */; };
 		3986EFD22409655900075516 /* MeteoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFD12409655900075516 /* MeteoriteDetailViewController.swift */; };
 		3986EFD42409679300075516 /* MeteoriteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986EFD32409679300075516 /* MeteoriteDetailViewModel.swift */; };
+		39A410C12426876D00A5025B /* MeteoriteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C02426876D00A5025B /* MeteoriteObject.swift */; };
+		39A410C32426886D00A5025B /* MeteoriteObject+Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C22426886D00A5025B /* MeteoriteObject+Persistable.swift */; };
+		39A410C5242688B100A5025B /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C4242688B100A5025B /* Persistable.swift */; };
+		39A410C724268A7300A5025B /* WriteTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C624268A7300A5025B /* WriteTransaction.swift */; };
+		39A410C924268A8000A5025B /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C824268A8000A5025B /* Container.swift */; };
 		F296B275FE2E89111ABB3C3F /* Pods_MeteoriteRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +71,11 @@
 		3986EFCE24095B3900075516 /* MeteoriteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteListCell.swift; sourceTree = "<group>"; };
 		3986EFD12409655900075516 /* MeteoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewController.swift; sourceTree = "<group>"; };
 		3986EFD32409679300075516 /* MeteoriteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteDetailViewModel.swift; sourceTree = "<group>"; };
+		39A410C02426876D00A5025B /* MeteoriteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteObject.swift; sourceTree = "<group>"; };
+		39A410C22426886D00A5025B /* MeteoriteObject+Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeteoriteObject+Persistable.swift"; sourceTree = "<group>"; };
+		39A410C4242688B100A5025B /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		39A410C624268A7300A5025B /* WriteTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTransaction.swift; sourceTree = "<group>"; };
+		39A410C824268A8000A5025B /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		97B4B0BDB8D055692C562774 /* Pods-MeteoriteRecordAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.release.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC481C350149D8A846D71DAB /* Pods-MeteoriteRecordAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +102,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39220ED4241B001600EF37A6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3986EF98240813D300075516 /* MeteoriteListViewController.swift */,
+				3986EFD12409655900075516 /* MeteoriteDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		39220ED5241B002D00EF37A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				393C41D0240D4EF900CC6CC0 /* DetailView.swift */,
+				3986EFCE24095B3900075516 /* MeteoriteListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		39220ED6241B003800EF37A6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3973319324145D280087285A /* Global.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		3986EF88240813D300075516 = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +153,13 @@
 			children = (
 				3986EF94240813D300075516 /* AppDelegate.swift */,
 				3986EF96240813D300075516 /* SceneDelegate.swift */,
-				3986EF98240813D300075516 /* MeteoriteListViewController.swift */,
-				3986EFD12409655900075516 /* MeteoriteDetailViewController.swift */,
-				393C41D0240D4EF900CC6CC0 /* DetailView.swift */,
-				3986EFCE24095B3900075516 /* MeteoriteListCell.swift */,
-				3973319324145D280087285A /* Global.swift */,
+				39220ED4241B001600EF37A6 /* ViewController */,
+				39220ED5241B002D00EF37A6 /* Views */,
+				39220ED6241B003800EF37A6 /* Util */,
 				3986EFD02409652400075516 /* ViewModel */,
 				3986EFC12408698E00075516 /* Model */,
 				3986EFBE240867ED00075516 /* NetworkingService */,
+				39A410BF2426866200A5025B /* PersistentLayer */,
 				3986EF9D240813D600075516 /* Assets.xcassets */,
 				3986EF9F240813D600075516 /* LaunchScreen.storyboard */,
 				3986EFA2240813D600075516 /* Info.plist */,
@@ -169,6 +204,18 @@
 				3986EFD32409679300075516 /* MeteoriteDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39A410BF2426866200A5025B /* PersistentLayer */ = {
+			isa = PBXGroup;
+			children = (
+				39A410C02426876D00A5025B /* MeteoriteObject.swift */,
+				39A410C22426886D00A5025B /* MeteoriteObject+Persistable.swift */,
+				39A410C4242688B100A5025B /* Persistable.swift */,
+				39A410C624268A7300A5025B /* WriteTransaction.swift */,
+				39A410C824268A8000A5025B /* Container.swift */,
+			);
+			path = PersistentLayer;
 			sourceTree = "<group>";
 		};
 		561DE4EB8CB8A71BD0BFF27B /* Frameworks */ = {
@@ -382,15 +429,20 @@
 				39220ED3241AF7B200EF37A6 /* APIClient.swift in Sources */,
 				3986EFD42409679300075516 /* MeteoriteDetailViewModel.swift in Sources */,
 				3986EF99240813D300075516 /* MeteoriteListViewController.swift in Sources */,
+				39A410C924268A8000A5025B /* Container.swift in Sources */,
 				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
 				393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */,
 				3986EFC02408685B00075516 /* GenericAPIClient.swift in Sources */,
+				39A410C5242688B100A5025B /* Persistable.swift in Sources */,
 				3986EFCF24095B3900075516 /* MeteoriteListCell.swift in Sources */,
 				3986EFC3240869A100075516 /* Meteorite.swift in Sources */,
+				39A410C12426876D00A5025B /* MeteoriteObject.swift in Sources */,
 				39733192241411600087285A /* Environment.swift in Sources */,
 				3973319424145D280087285A /* Global.swift in Sources */,
+				39A410C32426886D00A5025B /* MeteoriteObject+Persistable.swift in Sources */,
 				3986EFD22409655900075516 /* MeteoriteDetailViewController.swift in Sources */,
 				3986EF97240813D300075516 /* SceneDelegate.swift in Sources */,
+				39A410C724268A7300A5025B /* WriteTransaction.swift in Sources */,
 				3986EFCB24086E5200075516 /* MeteoriteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
