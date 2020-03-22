@@ -10,7 +10,9 @@ An app to display a list of fallen meteors on Earth since 1900.
 
 * ViewModel: viewmodel objects with all business logic
 * Model: data model objects
+* Repository: mediate layer between Data source and Viewmodels
 * Networking Service: Generic Networking Layer
+* DB: Generic DB Layer
 * Uint test: test the all functions in viewmodel with mocked networking service
 
 ## Next step:
