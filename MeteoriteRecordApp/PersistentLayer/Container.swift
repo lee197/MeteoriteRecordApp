@@ -25,6 +25,7 @@ public final class Container {
         let transaction = WriteTransaction(realm: realm)
         try realm.write {
             try block(transaction)
+            print("save thread: \(Thread.current)")
         }
     }
     

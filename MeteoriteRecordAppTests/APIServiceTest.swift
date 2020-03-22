@@ -30,7 +30,7 @@ class APIServiceTest: XCTestCase {
         
         // When fetch info
         let expect = XCTestExpectation(description: "callback")
-        sut.fetchInfo(){ result in
+        sut.fetchInfo(.listRecords){ result in
             expect.fulfill()
             switch result{
             case .success(let meteorites):

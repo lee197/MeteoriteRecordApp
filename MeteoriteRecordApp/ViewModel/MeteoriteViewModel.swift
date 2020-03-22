@@ -14,7 +14,7 @@ enum UserAlert:  String, Error {
 }
 
 final class MeteoriteViewModel {
-    private let apiClient: APIClient
+    private var dataRepo: DataRepository
     private var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
         didSet {
@@ -40,53 +40,27 @@ final class MeteoriteViewModel {
     var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
     let sizeAbsence = Double(APINULL.noSize.rawValue)
-    
-    init(apiClient: APIClient = APIClient()) {
-        self.apiClient = apiClient
+
+    init(dataRepo:DataRepository = DataRepository()) {
+        self.dataRepo = dataRepo
     }
     
     func initFetch() {
         self.isLoading = true
-        
-        apiClient.getListInfo(from: .listRecords){ [weak self] result in
+        dataRepo.fetchData = { [weak self] in
             self?.isLoading = false
-            switch result{
-            case .success(let meteorites):
-                self?.processMeteoriteToCellModel(meteorites: meteorites)
-                self?.saveToDB(meteorites)
-            case .failure(let error):
-                self?.getDbInfo()
-                self?.processError(error: error)
-            }
-        }
-    }
-    
-    private func saveToDB(_ meteorites: [APIMeteorite]){
-        do {
-            let container = try Container()
-            try container.write { transaction in
-                //TODO: Too much CPU, 13% CPU incraesed
-                meteorites.forEach{item in
-                    transaction.add(item, update: .modified)
-                }
-            }
-        } catch (let error) {
-            Global.printToConsole(message: error.localizedDescription)
-        }
-    }
-    
-    private func getDbInfo(){
-        do {
-            let container = try Container()
 
-            let results = container.values(
-                APIMeteorite.self,
-                matching:nil
-            )
-            self.processMeteoriteToCellModel(meteorites: results.filter{ $0.geolocation != nil })
-        } catch (let error) {
-            Global.printToConsole(message: error.localizedDescription)
+            let mData = self?.dataRepo.getMeteoriteData()
+            if let meteorites = mData?.meteoriteInfo {
+                self?.processMeteoriteToCellModel(meteorites: meteorites)
+            }
+            
+            if let errorType = mData?.error {
+                self?.processError(error: errorType)
+            }
         }
+        
+      dataRepo.initInfo()
     }
     
     private func processError(error:APIError){

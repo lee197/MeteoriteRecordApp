@@ -33,6 +33,7 @@
 		39A410C724268A7300A5025B /* WriteTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C624268A7300A5025B /* WriteTransaction.swift */; };
 		39A410C924268A8000A5025B /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410C824268A8000A5025B /* Container.swift */; };
 		39A410CB2426B16000A5025B /* FetchedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410CA2426B16000A5025B /* FetchedResults.swift */; };
+		39A410CE2428006800A5025B /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A410CD2428006800A5025B /* DataRepository.swift */; };
 		F296B275FE2E89111ABB3C3F /* Pods_MeteoriteRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		39A410C624268A7300A5025B /* WriteTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTransaction.swift; sourceTree = "<group>"; };
 		39A410C824268A8000A5025B /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		39A410CA2426B16000A5025B /* FetchedResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResults.swift; sourceTree = "<group>"; };
+		39A410CD2428006800A5025B /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		97B4B0BDB8D055692C562774 /* Pods-MeteoriteRecordAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.release.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC481C350149D8A846D71DAB /* Pods-MeteoriteRecordAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoriteRecordAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MeteoriteRecordAppTests/Pods-MeteoriteRecordAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C088A6A498D189E3F3A30D48 /* Pods_MeteoriteRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				39220ED6241B003800EF37A6 /* Util */,
 				3986EFD02409652400075516 /* ViewModel */,
 				3986EFC12408698E00075516 /* Model */,
+				39A410CC2428003900A5025B /* Repository  */,
 				3986EFBE240867ED00075516 /* NetworkingService */,
 				39A410BF2426866200A5025B /* PersistentLayer */,
 				3986EF9D240813D600075516 /* Assets.xcassets */,
@@ -221,6 +224,14 @@
 			path = PersistentLayer;
 			sourceTree = "<group>";
 		};
+		39A410CC2428003900A5025B /* Repository  */ = {
+			isa = PBXGroup;
+			children = (
+				39A410CD2428006800A5025B /* DataRepository.swift */,
+			);
+			path = "Repository ";
+			sourceTree = "<group>";
+		};
 		561DE4EB8CB8A71BD0BFF27B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,8 +263,8 @@
 				3986EF8D240813D300075516 /* Sources */,
 				3986EF8E240813D300075516 /* Frameworks */,
 				3986EF8F240813D300075516 /* Resources */,
-				5666431D7DCCF78095780445 /* [CP] Embed Pods Frameworks */,
 				39860F47240A805800B09F2E /* Run Lee Script */,
+				411A581F500CAC664A4362FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -382,9 +393,9 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		5666431D7DCCF78095780445 /* [CP] Embed Pods Frameworks */ = {
+		411A581F500CAC664A4362FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
@@ -434,6 +445,7 @@
 				3986EF99240813D300075516 /* MeteoriteListViewController.swift in Sources */,
 				39A410C924268A8000A5025B /* Container.swift in Sources */,
 				3986EF95240813D300075516 /* AppDelegate.swift in Sources */,
+				39A410CE2428006800A5025B /* DataRepository.swift in Sources */,
 				393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */,
 				3986EFC02408685B00075516 /* GenericAPIClient.swift in Sources */,
 				39A410CB2426B16000A5025B /* FetchedResults.swift in Sources */,

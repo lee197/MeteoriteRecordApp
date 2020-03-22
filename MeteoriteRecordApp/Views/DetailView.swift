@@ -120,7 +120,7 @@ class DetailView: UIView {
             [mNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
              mNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
              mNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
-             mNameLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
+             mNameLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height+20)
         ])
     }
    private func setupSizeLabelConstraints(){
