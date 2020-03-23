@@ -7,9 +7,11 @@ An app to display a list of fallen meteors on Earth since 1900.
 * develop - development branch, merge features branches here
 
 ## Project structure:
+
 <p align="center">
   <img src="MVVM%20structure.png" />
 </p>
+
 * ViewModel: viewmodel objects with all business logic
 * Model: data model objects
 * Repository: mediate layer between Data source and Viewmodels
