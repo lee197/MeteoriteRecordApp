@@ -24,7 +24,7 @@ extension APIClientProtocol {
 
         URLSession.shared.dataTask(with: type.request) { data, response, error in
             
-            guard error == nil else {
+            if let _ = error {
                 completion(.failure(.clientError))
                 return
             }

@@ -31,7 +31,7 @@ public final class Container {
     
     public func values<T: Persistable> (_ type: T.Type, matching query: T.Query?) -> FetchedResults<T> {
         var results = realm.objects(T.ManagedObject.self)
-        if let query = query{
+        if let query = query {
             if let predicate = query.predicate {
                 results = results.filter(predicate)
             }

@@ -11,36 +11,48 @@ import MapKit
 
 class MeteoriteListViewController: UIViewController {
     
-   private var tableView: UITableView = {
+    private var tableView: UITableView = {
         let tableView = UITableView(frame: UIScreen.main.bounds)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-   private var activityIndicator: UIActivityIndicatorView = {
+    private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         return activityIndicator
     }()
     
-   private lazy var meteoriteVM: MeteoriteViewModel = {
+    private lazy var meteoriteVM: MeteoriteViewModel = {
         return MeteoriteViewModel()
     }()
+    
+    private let cellID = "mCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.view.addSubview(tableView)
-        
-        activityIndicator.center = self.tableView.center
-        self.view.addSubview(activityIndicator)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(MeteoriteListCell.self, forCellReuseIdentifier: "mCell")
-        self.navigationItem.title = "Meteorite Record"
+        setupNavigationBar()
+        setupTableView()
+        setupActivityIndicator()
         initVM()
     }
     
-   private func initVM() {
+    private func setupNavigationBar(){
+        self.navigationItem.title = "Meteorite Record"
+    }
+    
+    private func setupTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(MeteoriteListCell.self, forCellReuseIdentifier: "mCell")
+    }
+    
+    private func setupActivityIndicator(){
+        activityIndicator.center = self.tableView.center
+        self.view.addSubview(activityIndicator)
+    }
+    
+    private func initVM() {
         meteoriteVM.showAlertClosure = { [weak self] in
             DispatchQueue.main.async {
                 if let message = self?.meteoriteVM.alertMessage {
@@ -74,7 +86,7 @@ class MeteoriteListViewController: UIViewController {
         meteoriteVM.initFetch()
     }
     
-   private func showAlert( _ message: String ) {
+    private func showAlert( _ message: String ) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -88,7 +100,7 @@ extension MeteoriteListViewController: UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "mCell", for: indexPath) as? MeteoriteListCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? MeteoriteListCell else {
             fatalError("Cell not in storyboard")
         }
         

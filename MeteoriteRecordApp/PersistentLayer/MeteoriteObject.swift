@@ -27,30 +27,7 @@ final class MeteoriteObject:Object{
     }
 }
 
-//final class GeolocationObject:Object{
-//    @objc dynamic var type = ""
-//    @objc dynamic var latitude = 0.0{
-//    didSet {
-//        compoundKey = compoundKeyValue()
-//    }
-//    @objc dynamic var longitude = 0.0{
-//        didSet {
-//            compoundKey = compoundKeyValue()
-//        }
-//    }
-//    @objc dynamic lazy var compoundKey: String = self.compoundKeyValue()
-//
-//
-//    override static func primaryKey() -> String? {
-//        return "compoundKey"
-//    }
-//
-//    func compoundKeyValue() -> String {
-//        return "\(latitude)\(longitude)"
-//    }
-//}
-
-public final class GeolocationObject: Object {
+final class GeolocationObject: Object {
     @objc dynamic var type = ""
     @objc dynamic var longitude = 0.0
     @objc dynamic var geoID = 0

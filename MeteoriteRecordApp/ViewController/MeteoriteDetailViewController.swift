@@ -24,6 +24,18 @@ class MeteoriteDetailViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+
+        self.detailView = createDetailView()
+        self.detailView.backgroundColor = .white
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showOnMap()
+        showMeteoriteInfo()
+    }
+    
+    private func createDetailView() -> DetailView{
         let detailView = DetailView(frame: UIScreen.main.bounds)
         self.view.addSubview(detailView)
         detailView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,14 +45,7 @@ class MeteoriteDetailViewController: UIViewController {
             detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
             detailView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
         ])
-        self.detailView = detailView
-        self.detailView.backgroundColor = .white
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        showOnMap()
-        showMeteoriteInfo()
+        return detailView
     }
     
     private func showMeteoriteInfo() {

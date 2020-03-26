@@ -17,5 +17,4 @@ class APIClient: APIClientProtocol {
             return result
         }, complete: completion)
     }
-    
 }

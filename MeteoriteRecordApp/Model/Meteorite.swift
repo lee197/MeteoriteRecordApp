@@ -22,7 +22,7 @@ protocol Meteorite {
     var mLocation: Geolocation{ get }
 }
 
-struct APIMeteorite:Decodable{
+struct APIMeteorite:Decodable {
       let name, id, nametype, recclass: String
       let mass: String?
       let fall: String
@@ -79,7 +79,7 @@ struct Geolocation: Codable {
     }
 }
 
-struct Coordinates{
+struct Coordinates {
     var latitude:Double
     var longitude:Double
     var isEmpty:Bool{

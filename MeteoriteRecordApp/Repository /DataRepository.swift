@@ -8,10 +8,10 @@
 
 import Foundation
 
-class DataRepository{
+class DataRepository {
     private let apiClient: APIClient
     private var dbContainer: Container?
-    private var mData: (meteoriteInfo: [Meteorite]?,error: APIError?){
+    private var mData: (meteoriteInfo: [Meteorite]?,error: APIError?) {
         didSet{
             self.fetchData?()
         }
@@ -22,15 +22,15 @@ class DataRepository{
         self.apiClient = apiClient
         do {
             self.dbContainer = try Container()
-            print("fetch thread: \(Thread.current)")
         } catch let error {
             Global.printToConsole(message: error.localizedDescription)
         }
     }
     
+    /// get the data online and store in the DB, if can not get online data, use the DB data
     func initInfo() {
         
-        apiClient.getListInfo(from: .listRecords){ [weak self] result in
+        apiClient.getListInfo(from: .listRecords) { [weak self] result in
             switch result{
             case .success(let meteorites):
                 
@@ -47,15 +47,15 @@ class DataRepository{
         }
     }
     
-    func getMeteoriteData() -> (meteoriteInfo: [Meteorite]?,error: APIError?){
+    func getMeteoriteData() -> (meteoriteInfo: [Meteorite]?,error: APIError?) {
         return mData
     }
     
-    private func saveToDB(_ meteorites: [APIMeteorite]){
+    private func saveToDB(_ meteorites: [APIMeteorite]) {
         do {
             try dbContainer?.write { transaction in
                 //TODO: Too much CPU, 13% CPU incraesed
-                meteorites.forEach{item in
+                meteorites.forEach { item in
                     transaction.add(item, update: .modified)
                 }
             }
@@ -64,11 +64,11 @@ class DataRepository{
         }
     }
     
-    private func getDbInfo(){
+    private func getDbInfo() {
         let results = dbContainer?.values(
             APIMeteorite.self,
             matching:nil
         )
-        self.mData.meteoriteInfo = results?.filter{ $0.geolocation != nil }
+        self.mData.meteoriteInfo = results?.filter { $0.geolocation != nil }
     }
 }

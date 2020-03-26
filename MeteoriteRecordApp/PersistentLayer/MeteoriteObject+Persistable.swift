@@ -27,22 +27,22 @@ extension APIMeteorite: Persistable {
     }
     
     public func managedObject() -> MeteoriteObject {
-        let meteorite = MeteoriteObject()
-        meteorite.name = name
-        meteorite.id = Int(id) ?? 0
-        meteorite.recclass = recclass
-        meteorite.nametype = nametype
-        meteorite.mass = mass
-        meteorite.fall = fall
-        meteorite.year = year
-        meteorite.reclat = reclat
-        meteorite.reclong = reclong
-        meteorite.geolocation?.latitude = geolocation?.coordinates[0] ?? 0
-        meteorite.geolocation?.longitude = geolocation?.coordinates[1] ?? 0
-        meteorite.geolocation?.type = geolocation?.type ?? ""
-        meteorite.geolocation?.geoID = Int((geolocation?.coordinates[0] ?? 0)*100000)
+        let meteoriteObject = MeteoriteObject()
+        meteoriteObject.name = name
+        meteoriteObject.id = Int(id) ?? 0
+        meteoriteObject.recclass = recclass
+        meteoriteObject.nametype = nametype
+        meteoriteObject.mass = mass
+        meteoriteObject.fall = fall
+        meteoriteObject.year = year
+        meteoriteObject.reclat = reclat
+        meteoriteObject.reclong = reclong
+        meteoriteObject.geolocation?.latitude = geolocation?.coordinates[0] ?? 0
+        meteoriteObject.geolocation?.longitude = geolocation?.coordinates[1] ?? 0
+        meteoriteObject.geolocation?.type = geolocation?.type ?? ""
+        meteoriteObject.geolocation?.geoID = Int((geolocation?.coordinates[0] ?? 0)*100000)
         
-        return meteorite
+        return meteoriteObject
     }
     
 }

@@ -47,6 +47,7 @@ final class MeteoriteViewModel {
     
     func initFetch() {
         self.isLoading = true
+        
         dataRepo.fetchData = { [weak self] in
             self?.isLoading = false
 
@@ -59,11 +60,10 @@ final class MeteoriteViewModel {
                 self?.processError(error: errorType)
             }
         }
-        
       dataRepo.initInfo()
     }
     
-    private func processError(error:APIError){
+    private func processError(error:APIError) {
         switch error {
         case .clientError:
             self.alertMessage = UserAlert.userError.rawValue
