@@ -6,6 +6,13 @@ An app to display a list of fallen meteors on Earth since 1900.
 * master - stable app releases
 * develop - development branch, merge features branches here
 
+## NASA METEORITE API:
+
+* View: https://data.nasa.gov/view/ak9y-cwf9
+* Documentation: https://dev.socrata.com/foundry/data.nasa.gov/y77d-th95
+* Json: https://data.nasa.gov/resource/y77d-th95.json
+* Administration: https://data.nasa.gov/login
+
 ## Dependencies:
 
 The project is using cocoapods for managing external libraries and a Gemfile for managing the cocoapods version.
