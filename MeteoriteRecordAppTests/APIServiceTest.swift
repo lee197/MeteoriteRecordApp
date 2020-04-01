@@ -11,11 +11,11 @@ import XCTest
 
 class APIServiceTest: XCTestCase {
     
-    var sut: APIClient?
+    var sut: MockDataRepository?
     
     override func setUp() {
         super.setUp()
-        sut = APIClient()
+        sut = MockDataRepository()
     }
     
     override func tearDown() {
@@ -30,11 +30,12 @@ class APIServiceTest: XCTestCase {
         
         // When fetch info
         let expect = XCTestExpectation(description: "callback")
-        sut.fetchInfo(.listRecords){ result in
+
+        sut.initFetch{ result in
             expect.fulfill()
             switch result{
             case .success(let meteorites):
-                XCTAssertEqual(meteorites.count, 1000)
+                XCTAssertEqual(meteorites.count, 10)
                 for meteorite in meteorites {
                     XCTAssertNotNil(meteorite.mName)
                 }

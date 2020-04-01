@@ -10,6 +10,7 @@
 		0E758A9194C31410781C3E93 /* Pods_MeteoriteRecordAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */; };
 		39220ED1241AEBAF00EF37A6 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39220ED0241AEBAF00EF37A6 /* EndPoint.swift */; };
 		39220ED3241AF7B200EF37A6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39220ED2241AF7B200EF37A6 /* APIClient.swift */; };
+		3932FD0E2433FA32000105C8 /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3932FD0D2433FA32000105C8 /* MockDataRepository.swift */; };
 		393C41D1240D4EF900CC6CC0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C41D0240D4EF900CC6CC0 /* DetailView.swift */; };
 		39733192241411600087285A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39733191241411600087285A /* Environment.swift */; };
 		3973319424145D280087285A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3973319324145D280087285A /* Global.swift */; };
@@ -52,6 +53,7 @@
 		16869E20400F794C60125254 /* Pods_MeteoriteRecordAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoriteRecordAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39220ED0241AEBAF00EF37A6 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		39220ED2241AF7B200EF37A6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		3932FD0D2433FA32000105C8 /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
 		393C41D0240D4EF900CC6CC0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		39733191241411600087285A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3973319324145D280087285A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		3932FD0C2433FA10000105C8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3932FD0D2433FA32000105C8 /* MockDataRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		3986EF88240813D300075516 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +186,7 @@
 		3986EFAA240813D600075516 /* MeteoriteRecordAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				3932FD0C2433FA10000105C8 /* Mocks */,
 				3986EFAB240813D600075516 /* MeteoriteRecordAppTests.swift */,
 				3986EFAD240813D600075516 /* Info.plist */,
 				3986EFC624086CF000075516 /* APIServiceTest.swift */,
@@ -266,7 +277,7 @@
 				3986EF8E240813D300075516 /* Frameworks */,
 				3986EF8F240813D300075516 /* Resources */,
 				39860F47240A805800B09F2E /* Run Lee Script */,
-				D6C48A588C16D2ADD03680CA /* [CP] Embed Pods Frameworks */,
+				38E473D7A660B68078612EC2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,6 +388,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		38E473D7A660B68078612EC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		39860F47240A805800B09F2E /* Run Lee Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -417,23 +445,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D6C48A588C16D2ADD03680CA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeteoriteRecordApp/Pods-MeteoriteRecordApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -471,6 +482,7 @@
 			files = (
 				3986EFC724086CF000075516 /* APIServiceTest.swift in Sources */,
 				3986EFAC240813D600075516 /* MeteoriteRecordAppTests.swift in Sources */,
+				3932FD0E2433FA32000105C8 /* MockDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

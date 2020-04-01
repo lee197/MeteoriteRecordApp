@@ -14,8 +14,8 @@ enum UserAlert:  String, Error {
 }
 
 final class MeteoriteViewModel {
-    private var dataRepo: DataRepository
-    private var meteoriteList = [Meteorite]()
+    private var dataRepo: DataRepositoryProtocol
+    var meteoriteList = [Meteorite]()
     private var cellViewModels: [MeteoriteListCellViewModel] = [MeteoriteListCellViewModel]() {
         didSet {
             self.reloadTableViewClosure?()
@@ -40,27 +40,24 @@ final class MeteoriteViewModel {
     var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
     let sizeAbsence = Double(APINULL.noSize.rawValue)
-
-    init(dataRepo:DataRepository = DataRepository()) {
+    
+    init(dataRepo:DataRepositoryProtocol = DataRepository()) {
         self.dataRepo = dataRepo
     }
     
     func initFetch() {
         self.isLoading = true
         
-        dataRepo.fetchData = { [weak self] in
+        dataRepo.initFetch{ [weak self] result in
             self?.isLoading = false
-
-            let mData = self?.dataRepo.getMeteoriteData()
-            if let meteorites = mData?.meteoriteInfo {
-                self?.processMeteoriteToCellModel(meteorites: meteorites)
-            }
             
-            if let errorType = mData?.error {
-                self?.processError(error: errorType)
+            switch result{
+            case .success(let meteorites):
+                self?.processMeteoriteToCellModel(meteorites: meteorites)
+            case .failure(let error):
+                self?.processError(error: error)
             }
         }
-      dataRepo.initInfo()
     }
     
     private func processError(error:APIError) {
