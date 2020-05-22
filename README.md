@@ -15,7 +15,9 @@ An app to display a list of fallen meteors on Earth since 1900.
 
 ## Dependencies:
 
-The project is using cocoapods for managing external libraries and a Gemfile for managing the cocoapods version.
+The project is not using cocoapods for managing external libraries and a Gemfile for managing the cocoapods version.
+
+In case you need to use cocoapods, please follow the instructions: 
 
 Installation
 ```
@@ -32,10 +34,6 @@ Then install the pods in your Xcode project directory:
 $ pod install
 ```
 
-## Core Dependencies:
-
-Alamofire: an HTTP networking library written in Swift.
-
 ## Project structure:
 
 <p align="center">
@@ -51,8 +49,7 @@ Alamofire: an HTTP networking library written in Swift.
 
 ## Next step:
 
-*  Make Generic Networking Layer or install Moya Networking pod
-
+*  optimize the unit test
 
 ## Author:
 
@@ -62,5 +59,3 @@ Alamofire: an HTTP networking library written in Swift.
 
 * https://www.linkedin.com/in/lee-qi/
 * www.leeqii.com
-
-

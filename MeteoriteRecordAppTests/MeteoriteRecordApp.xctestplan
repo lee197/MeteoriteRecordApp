@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "9043A5AC-63B5-4342-B680-97D89A8EB934",
+      "name" : "Configuration 1",
+      "options" : {
+        "environmentVariableEntries" : [
+
+        ]
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MeteoriteRecordApp.xcodeproj",
+      "identifier" : "3986EF90240813D300075516",
+      "name" : "MeteoriteRecordApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MeteoriteRecordApp.xcodeproj",
+        "identifier" : "3986EFA6240813D600075516",
+        "name" : "MeteoriteRecordAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

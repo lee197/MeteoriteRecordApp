@@ -17,17 +17,17 @@ class DetailView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.title)
         return label
     }()
-    var mSizeLabel: UILabel = {
+    var mFallLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.smallTitle)
         return label
     }()
-   private var mSizeTitleLabel: UILabel = {
+   private var mFallTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
     label.font = UIFont.boldSystemFont(ofSize: Layout.LabelFontSize.content)
-        label.text = "size:"
+        label.text = "fall-type:"
         label.textColor = .lightGray
         return label
     }()
@@ -93,13 +93,13 @@ class DetailView: UIView {
    private func setupViews() {
         self.addSubview(mapView)
         self.addSubview(mNameLabel)
-        self.addSubview(mSizeLabel)
+        self.addSubview(mFallLabel)
         self.addSubview(mDateLabel)
         self.addSubview(latitudeLabel)
         self.addSubview(longitudeLabel)
         self.addSubview(mapView)
         
-        self.addSubview(mSizeTitleLabel)
+        self.addSubview(mFallTitleLabel)
         self.addSubview(mDateTitleLabel)
         self.addSubview(latitudeTitleLabel)
         self.addSubview(longitudeTitleLabel)
@@ -120,20 +120,20 @@ class DetailView: UIView {
             [mNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
              mNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
              mNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
-             mNameLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
+             mNameLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height+20)
         ])
     }
    private func setupSizeLabelConstraints(){
         NSLayoutConstraint.activate(
-            [mSizeTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
-             mSizeTitleLabel.bottomAnchor.constraint(equalTo: mSizeLabel.topAnchor, constant: Layout.LabelConstraint.bottom),
-             mSizeTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
+            [mFallTitleLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mFallTitleLabel.bottomAnchor.constraint(equalTo: mFallLabel.topAnchor, constant: Layout.LabelConstraint.bottom),
+             mFallTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
         NSLayoutConstraint.activate(
-            [mSizeLabel.topAnchor.constraint(equalTo: mNameLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
-             mSizeLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
-             mSizeLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
-             mSizeLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
+            [mFallLabel.topAnchor.constraint(equalTo: mNameLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
+             mFallLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
+             mFallLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
+             mFallLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
     }
   private func setupDateLabelConstraints(){
@@ -143,7 +143,7 @@ class DetailView: UIView {
              mDateTitleLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)
         ])
         NSLayoutConstraint.activate(
-            [mDateLabel.topAnchor.constraint(equalTo: mSizeLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
+            [mDateLabel.topAnchor.constraint(equalTo: mFallLabel.bottomAnchor, constant: Layout.LabelConstraint.top),
              mDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor,constant: Layout.LabelConstraint.leading),
              mDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: Layout.LabelConstraint.trailing),
              mDateLabel.heightAnchor.constraint(equalToConstant: Layout.LabelSize.height)

@@ -24,16 +24,8 @@ class MeteoriteDetailViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        let detailView = DetailView(frame: UIScreen.main.bounds)
-        self.view.addSubview(detailView)
-        detailView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addConstraints([
-            detailView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
-            detailView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
-            detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
-            detailView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
-        ])
-        self.detailView = detailView
+
+        self.detailView = createDetailView()
         self.detailView.backgroundColor = .white
     }
     
@@ -43,9 +35,22 @@ class MeteoriteDetailViewController: UIViewController {
         showMeteoriteInfo()
     }
     
+    private func createDetailView() -> DetailView{
+        let detailView = DetailView(frame: UIScreen.main.bounds)
+        self.view.addSubview(detailView)
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addConstraints([
+            detailView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+            detailView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
+            detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            detailView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
+        ])
+        return detailView
+    }
+    
     private func showMeteoriteInfo() {
         detailView.mNameLabel.text = meteoriteDetailVM.getMeteorite().mName
-        detailView.mSizeLabel.text = String(meteoriteDetailVM.getMeteorite().mSize)
+        detailView.mFallLabel.text = String(meteoriteDetailVM.getMeteorite().mFall)
         detailView.mDateLabel.text = meteoriteDetailVM.getMeteorite().mDate
         detailView.latitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.location.latitude)
         detailView.longitudeLabel.text = String(meteoriteDetailVM.getMeteorite().mLocation.location.longitude)

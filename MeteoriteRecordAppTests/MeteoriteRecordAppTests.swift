@@ -11,30 +11,30 @@ import XCTest
 
 class MeteoriteRecordAppTests: XCTestCase {
     var sut: MeteoriteViewModel!
-    var mockAPIService: MockApiService!
+    var mockDataRepository: MockDataRepository!
     
     override func setUp() {
         super.setUp()
-        mockAPIService = MockApiService()
-        sut = MeteoriteViewModel(apiClient: mockAPIService)
+        mockDataRepository = MockDataRepository()
+        sut = MeteoriteViewModel(dataRepo: mockDataRepository)
     }
     
     override func tearDown() {
         sut = nil
-        mockAPIService = nil
+        mockDataRepository = nil
         super.tearDown()
     }
     
     func testFetchMeteorite() {
         
         // Given
-        mockAPIService.completeMeteorites = [Meteorite]()
+        mockDataRepository.completedMeteorites = [Meteorite]()
         
         // When
         sut.initFetch()
         
         // Assert
-        XCTAssert(mockAPIService.isFetchMeteoriteCalled)
+        XCTAssert(mockDataRepository.isFetchMeteoriteCalled)
     }
     
     func testFetchMeteoriteFail() {
@@ -45,31 +45,10 @@ class MeteoriteRecordAppTests: XCTestCase {
         
         // When
         sut.initFetch()
-        mockAPIService.fetchFail(error: error)
+        mockDataRepository.fetchFail(error: error)
         
         // Sut should display predefined error message
         XCTAssertEqual(sut.alertMessage, alert.rawValue)
-    }
-    
-    func testCreateCellViewModel() {
-        
-        // Given
-        let meteorites = DataGenerator().createMeteorite()
-        mockAPIService.completeMeteorites = meteorites
-        let expect = XCTestExpectation(description: "reload closure triggered")
-        sut.reloadTableViewClosure = { () in
-            expect.fulfill()
-        }
-        
-        // When
-        sut.initFetch()
-        mockAPIService.fetchSuccess()
-        
-        // Number of cell view model is equal to the number of meteorites
-        XCTAssertEqual(sut.numberOfCells, meteorites.count)
-        
-        // XCTAssert reload closure triggered
-        wait(for: [expect], timeout: 1.0)
     }
     
     func testLoadingWhileFetching() {
@@ -89,18 +68,104 @@ class MeteoriteRecordAppTests: XCTestCase {
         XCTAssertTrue(loadingStatus)
         
         // When finished fetching
-        mockAPIService!.fetchSuccess()
+        mockDataRepository!.fetchSuccess()
         XCTAssertFalse(loadingStatus)
         
         wait(for: [expect], timeout: 1.0)
     }
     
-    func testUserPressItemWithCoordinates() {
+    func testCreateCellViewModel() {
+        
+        // Given
+        let expect = XCTestExpectation(description: "reload closure triggered")
+        var meteoriteList = [Meteorite]()
+        sut.reloadTableViewClosure = { [weak self] () in
+            expect.fulfill()
+            meteoriteList = self?.sut.meteoriteList ?? []
+        }
+        
+        // When
+        sut.initFetch()
+        mockDataRepository.fetchSuccess()
+        
+        // Number of cell view model is equal to the number of meteorites
+        XCTAssertEqual(sut.numberOfCells, meteoriteList.count)
+        
+        // XCTAssert reload closure triggered
+        wait(for: [expect], timeout: 1.0)
+    }
+    
+    func testGetCellViewModel() {
+
+        //Given a sut with fetched meteorites
+        goToFetchMeteoriteFinished()
+        let indexPath = IndexPath(row: 1, section: 0)
+        let testMeteorite = mockDataRepository.completedMeteorites.sorted(by: { $0.mSize > $1.mSize })[indexPath.row]
+        
+        // When
+        let vm = sut.getCellViewModel(at: indexPath)
+
+        //Assert
+        XCTAssertEqual(vm.titleText, testMeteorite.mName)
+    }
+    
+    func testCellViewModel() {
+        
+        //Given APIMeteorite
+        let meteorite:Meteorite = APIMeteorite(name: "Meteorite",
+                                               id: "0",
+                                               nametype: "Valid",
+                                               recclass: "H6",
+                                               mass: "750.0",
+                                               fall: "Found",
+                                               year: "1934-01-01T00:00:00.000",
+                                               reclat: "-30.883330",
+                                               reclong: "-64.550000",
+                                               geolocation: Geolocation.init(type:"Point",
+                                                                             coordinates:[1.1,2.2]))
+        let meteoriteWithoutMass = APIMeteorite(name: "Meteorite",
+                                                id: "0",
+                                                nametype: "Valid",
+                                                recclass: "H6",
+                                                mass: nil,
+                                                fall: "Found",
+                                                year: "1934-01-01T00:00:00.000",
+                                                reclat: "-30.883330",
+                                                reclong: "-64.550000",
+                                                geolocation: Geolocation.init(type:"Point",
+                                                                              coordinates:[1.1,2.2]))
+        let meteoriteWithoutYear = APIMeteorite(name: "Meteorite",
+                                                id: "0",
+                                                nametype: "Valid",
+                                                recclass: "H6",
+                                                mass: "750",
+                                                fall: "Found",
+                                                year: nil,
+                                                reclat: "-30.883330",
+                                                reclong: "-64.550000",
+                                                geolocation: Geolocation.init(type:"Point",
+                                                                              coordinates:[1.1,2.2]))
+        
+        // When creat cell view model
+        let cellViewModel = sut!.createCellViewModel(meteorite: meteorite)
+        let cellViewModelWithoutMass = sut!.createCellViewModel(meteorite: meteoriteWithoutMass)
+        let cellViewModelWithoutYear = sut!.createCellViewModel(meteorite: meteoriteWithoutYear)
+        
+        // Assert the correctness of display information
+        XCTAssertEqual(meteorite.mName, cellViewModel.titleText)
+        XCTAssertEqual(meteorite.mDate, cellViewModel.dateText)
+        XCTAssertEqual(String(meteorite.mSize) + " KG", cellViewModel.sizeText)
+        
+        XCTAssertEqual(cellViewModelWithoutMass.sizeText, "UNKNOWN")
+        XCTAssertEqual(cellViewModelWithoutYear.dateText, "UNKNOWN")
+    }
+    
+    func testUserPressItemWithGeo() {
         
         //Given a sut with fetched meteorites
         let indexPath = IndexPath(row: 0, section: 0)
         goToFetchMeteoriteFinished()
-        
+        sut.initFetch()
         //When
         sut.userPressed(at: indexPath)
         
@@ -132,108 +197,19 @@ class MeteoriteRecordAppTests: XCTestCase {
         wait(for: [expect], timeout: 1.0)
     }
     
-    func testGetCellViewModel() {
-        
-        //Given a sut with fetched meteorites
-        goToFetchMeteoriteFinished()
-        let indexPath = IndexPath(row: 1, section: 0)
-        let testMeteorite = mockAPIService.completeMeteorites.sorted(by: { $0.mSize > $1.mSize })[indexPath.row]
-        
-        // When
-        let vm = sut.getCellViewModel(at: indexPath)
-        
-        //Assert
-        XCTAssertEqual(vm.titleText, testMeteorite.mName)
-    }
     
-    func testCellViewModel() {
-        
-        //Given APIMeteorite
-        let meteorite:Meteorite = APIMeteorite(name: "Meteorite",
-                                                    id: "0",
-                                                    nametype: "Valid",
-                                                    recclass: "H6",
-                                                    mass: "750.0",
-                                                    fall: "Found",
-                                                    year: "1934-01-01T00:00:00.000",
-                                                    reclat: "-30.883330",
-                                                    reclong: "-64.550000",
-                                                    geolocation: Geolocation.init(type:"Point",
-                                                                                  coordinates:[1.1,2.2]))
-        let meteoriteWithoutMass = APIMeteorite(name: "Meteorite",
-                                                     id: "0",
-                                                     nametype: "Valid",
-                                                     recclass: "H6",
-                                                     mass: nil,
-                                                     fall: "Found",
-                                                     year: "1934-01-01T00:00:00.000",
-                                                     reclat: "-30.883330",
-                                                     reclong: "-64.550000",
-                                                     geolocation: Geolocation.init(type:"Point",
-                                                                                   coordinates:[1.1,2.2]))
-        let meteoriteWithoutYear = APIMeteorite(name: "Meteorite",
-                                                     id: "0",
-                                                     nametype: "Valid",
-                                                     recclass: "H6",
-                                                     mass: "750",
-                                                     fall: "Found",
-                                                     year: nil,
-                                                     reclat: "-30.883330",
-                                                     reclong: "-64.550000",
-                                                     geolocation: Geolocation.init(type:"Point",
-                                                                                   coordinates:[1.1,2.2]))
-        
-        // When creat cell view model
-        let cellViewModel = sut!.createCellViewModel(meteorite: meteorite)
-        let cellViewModelWithoutMass = sut!.createCellViewModel(meteorite: meteoriteWithoutMass)
-        let cellViewModelWithoutYear = sut!.createCellViewModel(meteorite: meteoriteWithoutYear)
-        
-        // Assert the correctness of display information
-        XCTAssertEqual(meteorite.mName, cellViewModel.titleText)
-        XCTAssertEqual(meteorite.mDate, cellViewModel.dateText)
-        XCTAssertEqual(String(meteorite.mSize), cellViewModel.sizeText)
-        
-        XCTAssertEqual(cellViewModelWithoutMass.sizeText, "UNKNOWN")
-        XCTAssertEqual(cellViewModelWithoutYear.dateText, "UNKNOWN")
-    }
 }
 
 //MARK: State control
 extension MeteoriteRecordAppTests {
     private func goToFetchMeteoriteFinished() {
-        mockAPIService.completeMeteorites = DataGenerator().createMeteorite()
+        mockDataRepository.completedMeteorites = MockDataGenerator().mockMeteoriteData()
         sut.initFetch()
-        mockAPIService.fetchSuccess()
+        mockDataRepository.fetchSuccess()
     }
 }
 
-class MockApiService: APIClientProtocol {
-    var isFetchMeteoriteCalled = false
-    var completeMeteorites: [Meteorite] = [Meteorite]()
-    var completeClosure: ((Result<[Meteorite], APIError>) -> ())!
-    
-    func fetchInfo(complete: @escaping (Result<[Meteorite], APIError>) -> ()) {
-           isFetchMeteoriteCalled = true
-           completeClosure = complete
-    }
-    
-    func fetchSuccess() {
-        completeClosure(.success(completeMeteorites))
-    }
-    
-    func fetchFail(error: APIError) {
-        completeClosure(.failure(error))
-    }
-}
 
-class DataGenerator {
-    func createMeteorite() -> [Meteorite] {
-        let path = Bundle.main.path(forResource: "ApiTestData", ofType: "json")!
-        let data = try? Data(contentsOf: URL(fileURLWithPath: path))
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        let meteorites = try? decoder.decode([APIMeteorite].self, from: data!)
-        return meteorites!
-    }
-}
+
+
 
