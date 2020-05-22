@@ -1,6 +1,11 @@
 # MeteoriteRecordApp
 An app to display a list of fallen meteors on Earth since 1900.
 
+## Branches:
+
+* master - stable app releases
+* develop - development branch, merge features branches here
+
 ## NASA METEORITE API:
 
 * View: https://data.nasa.gov/view/ak9y-cwf9
@@ -8,10 +13,26 @@ An app to display a list of fallen meteors on Earth since 1900.
 * Json: https://data.nasa.gov/resource/y77d-th95.json
 * Administration: https://data.nasa.gov/login
 
-## Branches:
+## Dependencies:
 
-* master - stable app releases
-* develop - development branch, merge features branches here
+The project is not using cocoapods for managing external libraries and a Gemfile for managing the cocoapods version.
+
+In case you need to use cocoapods, please follow the instructions: 
+
+Installation
+```
+$ sudo gem install cocoapods
+```
+
+Create a pod file in your Xcode project directory:
+```
+$ pod init
+```
+
+Then install the pods in your Xcode project directory:
+```
+$ pod install
+```
 
 ## Project structure:
 
@@ -29,3 +50,12 @@ An app to display a list of fallen meteors on Earth since 1900.
 ## Next step:
 
 *  optimize the unit test
+
+## Author:
+
+*  Qi Li
+
+## Contact:
+
+* https://www.linkedin.com/in/lee-qi/
+* www.leeqii.com
