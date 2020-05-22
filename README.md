@@ -45,3 +45,15 @@ Alamofire: an HTTP networking library written in Swift.
 ## Next step:
 
 *  Make Generic Networking Layer or install Moya Networking pod
+
+
+## Author:
+
+*  Qi Li
+
+## Contact:
+
+* https://www.linkedin.com/in/lee-qi/
+* www.leeqii.com
+
+
