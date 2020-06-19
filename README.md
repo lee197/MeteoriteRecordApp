@@ -6,12 +6,11 @@ An app to display a list of fallen meteors on Earth since 1900.
 * master - stable app releases
 * develop - development branch, merge features branches here
 
-## NASA METEORITE API:
+## Articles API:
 
-* View: https://data.nasa.gov/view/ak9y-cwf9
-* Documentation: https://dev.socrata.com/foundry/data.nasa.gov/y77d-th95
-* Json: https://data.nasa.gov/resource/y77d-th95.json
-* Administration: https://data.nasa.gov/login
+* Articles sorted by emailed: https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=dylOnQnYUzEF1B9MTYYHM0MyffMPBZRi
+* Articles sorted by shared: https://api.nytimes.com/svc/mostpopular/v2/shared/7.json?api-key=dylOnQnYUzEF1B9MTYYHM0MyffMPBZRi
+* Articles sorted by viewed: https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=dylOnQnYUzEF1B9MTYYHM0MyffMPBZRi
 
 ## Dependencies:
 
@@ -36,16 +35,7 @@ $ pod install
 
 ## Project structure:
 
-<p align="center">
-  <img src="MVVM%20structure.png" />
-</p>
 
-* ViewModel: viewmodel objects with all business logic
-* Model: data model objects
-* Repository: mediate layer between Data source and Viewmodels
-* Networking Service: Generic Networking Layer
-* DB: Generic DB Layer
-* Uint test: test the all functions in viewmodel with mocked networking service
 
 ## Next step:
 
