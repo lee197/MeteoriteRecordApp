@@ -15,9 +15,7 @@ An app to display a list of fallen meteors on Earth since 1900.
 
 ## Dependencies:
 
-The project is not using cocoapods for managing external libraries and a Gemfile for managing the cocoapods version.
-
-In case you need to use cocoapods, please follow the instructions: 
+The project is using cocoapods for managing external libraries, please follow the instructions: 
 
 Installation
 ```
